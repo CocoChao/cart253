@@ -1,34 +1,20 @@
-//Title of Project
-//Author Name
-
-//This is a template. You must fill in the title,
-//author, and this description to match your project!
-
-//
-
-// preload()
-//
-// Description of preload
-
-function preload() {
-
-let x = 0;
-let y = 0;
-let size = 1
-
 }
+//Ex1: Added starter code project
+//Carole Chao
+//Draws a moving square that moves from left to right across the canvas
+// on top of the canvas.
 
 
 // setup()
 //
-// Description of setup
+// Add a sky blue background and a kaki green square getting greener and greener,
+// with red strokes
 
 function setup() {
 createCanvas(500,500);
-background(145,200,639);
-fill(200,159,80);
-noStroke();
-
+fill(200,159,80,2);
+stroke(100,0,0);
+background(145,200,639)
 
 }
 
@@ -38,10 +24,7 @@ noStroke();
 // Description of draw()
 
 function draw() {
+  rect(mouseX,mouseY,100,100);
 
-x += 5;
-y += 5;
-size += 2;
-ellipse(0,0,1,1);
 
 }
