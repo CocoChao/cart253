@@ -1,4 +1,3 @@
-}
 //Ex1: Added starter code project
 //Carole Chao
 //Draws a moving square that moves from left to right across the canvas
