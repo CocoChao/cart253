@@ -1,27 +1,47 @@
-//Ex1: Added shape under that follows the mouse
+//Ex1: Added shape moving left to right"
 //Carole Chao
 
-// setup()
-//
-// Add a sky blue background and a kaki green square getting greener and greener,
-// with red strokes
+//preload()
+//Add an image of a clown
 
-function setup() {
-createCanvas(500,500);
-fill(200,159,80,2);
-stroke(100,0,0);
-background(145,200,639)
+let exampleImageX = 150;
+let exampleImageY = 150;
+
+//preload()
+//Add an image of a clown
+
+let exampleImage;
+
+function preload() {
+
+  exampleImage = loadImage ("assets/images/clown.png");
 
 }
 
+//setup()
+//set the image size and place in the canvas
+
+let x;
+let y;
+let speed;
+
+function setup() {
+  createCanvas(500,500);
+  background(150,150,150);
+  frameRate(30);
+  image(exampleImage,0,0,150,150);
+  x = width / 2;
+  y = height;
+
+}
 
 // draw()
-//
-// Draws a moving square that moves from left to right across the canvas
-// on top of the canvas.
+// Make the clown move from left to right in the canvas
 
 function draw() {
-  rect(mouseX,mouseY,100,100);
 
+// Jiggling randomly on the horizontal axis
+y = y + random(-1, 1);
+exampleImageX += 25 ;
 
 }
