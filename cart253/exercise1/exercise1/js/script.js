@@ -95,23 +95,18 @@ function draw() {
   //*Display the square
   //*rect(squareX,squareY,squareSize,squareSize);
 
-//Added shape, make the square with the red outline
-//transparent to dark green that periodically becomes more orange,
-//follow my mouse
+// Added shape, make the square with the red outline
+// transparent to dark green that periodically becomes more orange
+// follow my mouse
 
   rect(0,0,100,100);
   fill(200,159,80,10);
   rect(mouseX,mouseY,100,100);
   rectY += 1;
 
-
-
-// Move the clown image move from left to right of the canvas
+// Move the clown image jiggling from left to right
   exampleImageX += random(0,50);
   exampleImageY += random(0,50);
-  // ellipseX += random(0,50);
-  // ellipseY += random(0,50);
   image(exampleImage,exampleImageX,exampleImageY);
-  //ellipse(ellipse,ellipseX,ellipseY);
 
 }
