@@ -76,25 +76,26 @@ function setup() {
 // Draw the circle and image on screen
 
 function draw() {
-  // We don't fill the background so we get a drawing effect
+  
+  //*We don't fill the background so we get a drawing effect
 
-  // Move circle up and to the right
-  // circleX += 1;
-  // circleY -= 1;
-  // Make the circle transparent red
-  // fill(255,0,0,10);
-  // Display the circle
-  // ellipse(circleX,circleY,circleSize,circleSize);
+  //*Move circle up and to the right
+  //*circleX += 1;
+  //*circleY -= 1;
+  //*Make the circle transparent red
+  //*fill(255,0,0,10);
+  //*Display the circle
+  //*ellipse(circleX,circleY,circleSize,circleSize);
 
-  // Move square up and to the left
-  // squareX -= 1;
-  // squareY -= 1;
-  // Make the square transparent blue
-  // fill(0,0,255,10);
-  // Display the square
-  // rect(squareX,squareY,squareSize,squareSize);
+  //*Move square up and to the left
+  //*squareX -= 1;
+  //*squareY -= 1;
+  //*Make the square transparent blue
+  //*fill(0,0,255,10);
+  //*Display the square
+  //*rect(squareX,squareY,squareSize,squareSize);
 
-// Added shape, make the square with the red outline
+//Added shape, make the square with the red outline
 //transparent to dark green that periodically becomes more orange,
 //follow my mouse
 
