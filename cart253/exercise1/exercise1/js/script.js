@@ -96,7 +96,7 @@ function draw() {
   //*rect(squareX,squareY,squareSize,squareSize);
 
 // Added shape, make the square with the red outline
-// transparent to dark green that periodically becomes more orange
+// transparent to orange that periodically becomes more orange
 // follow my mouse
 
   rect(0,0,100,100);
