@@ -66,18 +66,18 @@ function setup() {
 
 // Added image of clown at the top left corner of the canvas
   image(exampleImage,0,0,100,100);
-
-
+  
+// Square starts moving in the middle
+  rectX = width/2;
+  rectY= height;
 }
 
 // draw()
-//
 // Change the circle and image positions so they move
 // Draw the circle and image on screen
 
 function draw() {
-  
-  //*We don't fill the background so we get a drawing effect
+   //*We don't fill the background so we get a drawing effect
 
   //*Move circle up and to the right
   //*circleX += 1;
@@ -96,17 +96,17 @@ function draw() {
   //*rect(squareX,squareY,squareSize,squareSize);
 
 // Added shape, make the square with the red outline
-// transparent to orange that periodically becomes more orange
-// follow my mouse
-
-  rect(0,0,100,100);
+// transparent to orange follow my mouse
   fill(200,159,80,10);
   rect(mouseX,mouseY,100,100);
-  rectY += 1;
 
+// Move the square from down up
+  rectX += random(0,50);
+  rectY -+ 1;
+  rect(rect,rectX,rectY);
+  
 // Move the clown image jiggling from left to right
   exampleImageX += random(0,50);
   exampleImageY += random(0,50);
   image(exampleImage,exampleImageX,exampleImageY);
-
 }
