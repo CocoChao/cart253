@@ -31,6 +31,11 @@ let enemyVY = 0;
 
 // How many dodges the player has made
 let dodges = 0;
+
+
+// Get a random element from an array using the random(Array)
+// let r = random(0,50);
+
 // The font
 // let myFont;
 
@@ -55,8 +60,9 @@ function setup() {
   enemyX = 0;
   enemyY = random(0,height);
 
-  // No stroke so it looks cleaner
-  noStroke();
+  // Add stroke
+  stroke(10);
+  strokeWeight(5);
 }
 
 // draw()
@@ -151,6 +157,26 @@ function draw() {
     enemyY = random(0,height);
     enemySize = enemySize + 2; //increase enemy size when successfully dodge
     enemySpeed = enemySpeed + 2; //increase enemy speed when successfully dodge
+  }
+// Change background color according to mouse location
+  if (mouseX < width/3) {
+    background(100,75,75);
+  }
+  else if (mouseX < 2 * width/3) {
+    background(100,125,100);
+  }
+  else {
+    background(125,125,150);
+  }
+
+
+  if (mouseIsPressed) {
+    ellipseMode(CENTER);
+    ellipse(250,250,100,100);
+  }
+  else {
+    rectMode(CENTER);
+    rect(250,250,100,100);
   }
 
   // Display the number of successful dodges in the console
