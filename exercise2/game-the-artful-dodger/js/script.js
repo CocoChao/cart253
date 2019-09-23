@@ -16,6 +16,8 @@ let avatarSize = 50;
 let avatarSpeed = 10;
 let avatarVX = 0;
 let avatarVY = 0;
+let speed = 2 ;
+let ax = 0.50; //acceleration
 
 // The position and size of the enemy circle
 let enemyX;
@@ -25,13 +27,21 @@ let enemySize = 50;
 // The speed and velocity of our enemy circle
 let enemySpeed = 5;
 let enemyVX = 5;
+let enemyVY = 0;
 
 // How many dodges the player has made
 let dodges = 0;
+// The font
+// let myFont;
 
 // setup()
 //
 // Make the canvas, position the avatar and anemy
+
+// function preload() {
+// myFont = loadFont('<link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet"> ')
+// }
+
 function setup() {
   // Create our playing area
   createCanvas(500,500);
@@ -39,6 +49,7 @@ function setup() {
   // Put the avatar in the centre
   avatarX = width/2;
   avatarY = height/2;
+  vx = speed; //acceleration
 
   // Put the enemy to the left at a random y coordinate within the canvas
   enemyX = 0;
@@ -60,15 +71,22 @@ function draw() {
   avatarVX = 0;
   avatarVY = 0;
 
+  // Change velocity based on acceleration
+  evnemyVX = enemyVX + ax;
+  enemyVX = constrain(enemyVY,0,50);
+
+  // Change position based on velocity
+  enemyX = enemyX + avatarVX;
+
   // Check which keys are down and set the avatar's velocity based on its
   // speed appropriately
 
   // Left and right
   if (keyIsDown(LEFT_ARROW)) {
-    avatarVX = -avatarSpeed;
+    avatarVX = -avatarSpeed + 1;
   }
   else if (keyIsDown(RIGHT_ARROW)) {
-    avatarVX = avatarSpeed;
+    avatarVX = avatarSpeed + 1;
   }
 
   // Up and down (separate if-statements so you can move vertically and
@@ -85,7 +103,7 @@ function draw() {
   avatarY = avatarY + avatarVY;
 
   // The enemy always moves at enemySpeed
-  enemyVX = enemySpeed;
+  enemyVX = enemySpeed ;
   // Update the enemy's position based on its velocity
   enemyX = enemyX + enemyVX;
 
@@ -101,6 +119,10 @@ function draw() {
     // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
+    // Reset the enemy's size
+    enemySize = 50;
+    // Reset the enemy's speed
+    enemySpeed = 5;
     // Reset the dodge counter
     dodges = 0;
   }
@@ -114,6 +136,8 @@ function draw() {
     avatarX = width/2;
     avatarY = height/2;
     dodges = 0;
+    enemySize = 50;
+    enemySpeed = 5;
   }
 
   // Check if the enemy has moved all the way across the screen
@@ -125,6 +149,8 @@ function draw() {
     // Reset the enemy's position to the left at a random height
     enemyX = 0;
     enemyY = random(0,height);
+    enemySize = enemySize + 2; //increase enemy size when successfully dodge
+    enemySpeed = enemySpeed + 2; //increase enemy speed when successfully dodge
   }
 
   // Display the number of successful dodges in the console
@@ -140,4 +166,9 @@ function draw() {
   // Draw the enemy as a circle
   ellipse(enemyX,enemyY,enemySize,enemySize);
 
+  // Display successful dodges on the canvas
+  textSize(32);
+  text('Successful dodges :',10,30);
+  fill(100,100,153);
+  textFont('Georgia');
 }
