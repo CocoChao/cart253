@@ -120,6 +120,18 @@ function setup() {
 // Displays the game over screen if the player has won,
 // otherwise nothing (all the gameplay stuff is in mousePressed())
 function draw() {
+
+  // Display the target image at the top right of the canvas with
+  // a colored backgroud
+    fill(255,207,207);
+    rect(0,0,250,175);
+    strokeWeight(3);
+    image(targetImage,125,100);
+  // Add the text caption to the image
+    textSize(30);
+    fill(255,0,0);
+    text('CHIEN PERDU',20,30);
+
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
@@ -138,7 +150,7 @@ function draw() {
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
   }
-}
+  }
 
 // mousePressed()
 //
