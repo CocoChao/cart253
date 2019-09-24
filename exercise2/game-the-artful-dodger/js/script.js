@@ -1,7 +1,9 @@
 /******************************************************
 
 Game - The Artful Dodger
-Pippin Barr
+Carole Chao
+
+Homework 2
 
 A simple dodging game with keyboard controls
 
