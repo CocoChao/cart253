@@ -130,12 +130,12 @@ function draw() {
   // Add the text caption to the image
     textSize(30);
     fill(255,0,0);
-    text('CHIEN PERDU',20,30);
+    text('I AM LOST :(',30,30);
 
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
-    textSize(128);
+    textSize(100);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
@@ -147,7 +147,7 @@ function draw() {
     // they already know because they found it!)
     noFill();
     stroke(random(255));
-    strokeWeight(10);
+    strokeWeight(5);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
   }
   }
@@ -165,6 +165,8 @@ function mousePressed() {
     // i.e. check if it's within the top and bottom of the image
     if (mouseY > targetY - targetImage.height/2 && mouseY < targetY + targetImage.height/2) {
       gameOver = true;
+    // Resize the targetImage on the "I AM LOST" square
+    targetImage.resize(250,200);
     }
   }
 }
