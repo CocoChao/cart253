@@ -194,7 +194,7 @@ function draw() {
 
   // Display successful dodges on the canvas
   textSize(32);
-  text('Successful dodges :',10,30);
+  text(dodges,10,30);
   fill(100,100,153);
   textFont('Georgia');
 }
