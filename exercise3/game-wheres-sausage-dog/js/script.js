@@ -3,6 +3,7 @@
 /******************************************************************************
 Where's Sausage Dog?
 by Pippin Barr
+Modified by Carole Chao
 
 An algorithmic version of a Where's Wally/Waldo searching game where you
 need to click on the sausage dog you're searching for in amongst all
@@ -16,6 +17,10 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 let targetX;
 let targetY;
 let targetImage;
+let targetImageSpeed = 5
+let targetImageVX;
+let targetImageVY;
+let speed = 2;
 
 // The ten decoy images
 let decoyImage1;
@@ -59,6 +64,11 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
+
+  // The targetImage velocity
+  targetImageVX = 5;
+  targetImageVY = 5;
+
   createCanvas(windowWidth,windowHeight);
   background("#ffff00");
   imageMode(CENTER);
@@ -140,8 +150,32 @@ function draw() {
     noStroke();
     fill(random(255));
 
+if (targetX > width) {
+  targetImageVX = targetImageVX * -1;
+  }
+if (targetX < 0 ) {
+  targetImageVX = targetImageVX * -1;
+  }
+if (targetY > height) {
+  targetImageVY = targetImageVY * -1;
+  }
+if (targetY < 0) {
+  targetImageVY = targetImageVY * -1;
+  }
+
+
+
+targetX = targetX + targetImageVX;
+targetY = targetY + targetImageVY;
+image(targetImage, targetX, targetY);
+
+    // Make targetImage move on the screen.
+    //targetImageVX = targetImageSpeed;
+    //targetImageX = targetImageX + targetImageVX;
+
+
     // Tell them they won!
-    text("YOU WINNED!",width/2,height/2);
+    text("GOOD JOB!",width/2,height/2);
 
     // Draw a circle around the sausage dog to show where it is (even though
     // they already know because they found it!)
@@ -149,6 +183,9 @@ function draw() {
     stroke(random(255));
     strokeWeight(5);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+    // Make the sausage dog move on the screen when you've won
+
   }
   }
 
