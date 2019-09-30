@@ -17,6 +17,7 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 let targetX;
 let targetY;
 let targetImage;
+let targetImageSize;
 let targetImageSpeed = 5
 let targetImageVX;
 let targetImageVY;
@@ -122,6 +123,7 @@ function setup() {
 
   // And draw it (because it's the last thing drawn, it will always be on top)
   image(targetImage,targetX,targetY);
+  targetImageSize = targetImage.width;
 }
 
 
@@ -137,19 +139,17 @@ function draw() {
     rect(0,0,250,175);
     strokeWeight(3);
     image(targetImage,125,100);
-  // Add the text caption to the image
-    textSize(30);
-    fill(255,0,0);
-    text('I AM LOST :(',30,30);
+
 
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
-    textSize(100);
+    textSize(75);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
 
+// Make the sausage dog move on the screen when you've won
 if (targetX > width) {
   targetImageVX = targetImageVX * -1;
   }
@@ -164,35 +164,101 @@ if (targetY < 0) {
   }
 
 
-
 targetX = targetX + targetImageVX;
 targetY = targetY + targetImageVY;
 image(targetImage, targetX, targetY);
 
-    // Make targetImage move on the screen.
-    //targetImageVX = targetImageSpeed;
-    //targetImageX = targetImageX + targetImageVX;
-
-
     // Tell them they won!
-    text("GOOD JOB!",width/2,height/2);
+    text("HERE'S A TREAT!",width/2,height/2);
 
-    // Draw a circle around the sausage dog to show where it is (even though
-    // they already know because they found it!)
+    // Make the targetImage bigger on the screen and the text box when they win
     noFill();
-    stroke(random(255));
-    strokeWeight(5);
+    noStroke();
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-    // Make the sausage dog move on the screen when you've won
-
+    //
+    //if (mouseIsPressed) {
+    //targetImage.resize(targetImageSize*0,75);
+    //}
   }
+  // Add the text caption to the image
+  textAlign(LEFT,TOP);
+  textSize(30);
+  fill(255,0,0);
+  text('I AM LOST :(',30,30);
   }
 
 // mousePressed()
 //
 // Checks if the player clicked on the target and if so tells them they won
 function mousePressed() {
+
+if (gameOver) {
+// Make the targetImage size smaller each time we find the dog
+  targetImageSize = targetImageSize * 0.75;
+  console.log(targetImageSize);
+// Reset the screen (stops the moving targetImage) to continue the game
+// and find the targetImage
+  targetImage.resize(targetImageSize,targetImageSize)
+  gameOver = false;
+  background("#ffff00");
+  imageMode(CENTER);
+
+// Copy the
+  // Use a for loop to draw as many decoys as we need
+  for (let i = 0; i < numDecoys; i++) {
+    // Choose a random location on the canvas for this decoy
+    let x = random(0,width);
+    let y = random(0,height);
+    // Generate a random number we can use for probability
+    let r = random();
+    // Use the random number to display one of the ten decoy
+    // images, each with a 10% chance of being shown
+    // We'll talk more about this nice quality of random soon enough.
+    // But basically each "if" and "else if" has a 10% chance of being true
+    if (r < 0.1) {
+      image(decoyImage1,x,y);
+    }
+    else if (r < 0.2) {
+      image(decoyImage2,x,y);
+    }
+    else if (r < 0.3) {
+      image(decoyImage3,x,y);
+    }
+    else if (r < 0.4) {
+      image(decoyImage4,x,y);
+    }
+    else if (r < 0.5) {
+      image(decoyImage5,x,y);
+    }
+    else if (r < 0.6) {
+      image(decoyImage6,x,y);
+    }
+    else if (r < 0.7) {
+      image(decoyImage7,x,y);
+    }
+    else if (r < 0.8) {
+      image(decoyImage8,x,y);
+    }
+    else if (r < 0.9) {
+      image(decoyImage9,x,y);
+    }
+    else if (r < 1.0) {
+      image(decoyImage10,x,y);
+    }
+  }
+
+  // Once we've displayed all decoys, we choose a random location for the target
+  targetX = random(0,width);
+  targetY = random(0,height);
+
+  // And draw it (because it's the last thing drawn, it will always be on top)
+  image(targetImage,targetX,targetY);
+  console.log(targetX);
+
+}
+
+else {
   // The mouse was clicked!
   // Check if the cursor is in the x range of the target
   // (We're subtracting the image's width/2 because we're using imageMode(CENTER) -
@@ -206,4 +272,5 @@ function mousePressed() {
     targetImage.resize(250,200);
     }
   }
+}
 }
