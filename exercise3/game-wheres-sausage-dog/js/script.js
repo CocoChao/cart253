@@ -176,16 +176,16 @@ image(targetImage, targetX, targetY);
     noStroke();
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-    //
-    //if (mouseIsPressed) {
-    //targetImage.resize(targetImageSize*0,75);
-    //}
   }
   // Add the text caption to the image
   textAlign(LEFT,TOP);
   textSize(30);
   fill(255,0,0);
-  text('I AM LOST :(',30,30);
+  text('I AM LOST :(',30,10);
+  textAlign(LEFT)
+  textSize(20);
+  text('Press Crtl+R to restart',30,130);
+  text('the game',30,150);
   }
 
 // mousePressed()
