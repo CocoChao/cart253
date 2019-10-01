@@ -48,6 +48,9 @@ let preyFill = 200;
 let eatHealth = 10;
 // Number of prey eaten during the game (the "score")
 let preyEaten = 0;
+// Change variables from random to noise
+let preyTX = 0;
+let preyTY = 0;
 
 // setup()
 //
@@ -91,6 +94,8 @@ function setupPlayer() {
 // When the game is over, shows the game over screen.
 function draw() {
   background(100, 100, 200);
+  preyTX += 0.01;
+  preyTY += 0.01
 
   if (!gameOver) {
     handleInput();
@@ -218,14 +223,14 @@ function movePrey() {
   // Change the prey's velocity at random intervals
   // random() will be < 0.05 5% of the time, so the prey
   // will change direction on 5% of frames
-  if (random() < 0.05) {
-    // Set velocity based on random values to get a new direction
+  if (random()< 0.05) {
+    // Set velocity based on the moment we want a values to get a new direction
     // and speed of movement
     //
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-    preyVY = map(random(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVX = map(noise(preyTX), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVY = map(noise(preyTY), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
 
   // Update prey position based on velocity
