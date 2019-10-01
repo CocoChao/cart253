@@ -95,7 +95,7 @@ function setupPlayer() {
 function draw() {
   background(100, 100, 200);
   preyTX += 0.01;
-  preyTY += 0.01
+  preyTY += 0.01;
 
   if (!gameOver) {
     handleInput();
