@@ -174,10 +174,6 @@ function draw() {
   textSize(30);
   fill(255, 0, 0);
   text('I AM LOST :(', 30, 10);
-  textAlign(LEFT)
-  textSize(20);
-  text('Press Crtl+R to restart', 30, 130);
-  text('the game', 30, 150);
 }
 
 // mousePressed()
