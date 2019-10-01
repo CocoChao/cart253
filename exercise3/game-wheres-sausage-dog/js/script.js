@@ -67,8 +67,8 @@ function preload() {
 function setup() {
 
   // The targetImage velocity
-  targetImageVX = 5;
-  targetImageVY = 5;
+  targetImageVX = 5 * 0.5;
+  targetImageVY = 5 * 0.5;
 
   createCanvas(windowWidth, windowHeight);
   background("#ffff00");
@@ -140,7 +140,7 @@ function draw() {
     noStroke();
     fill(random(255));
 
-    // Make the sausage dog move on the screen when you've won
+    // Make the sausage dog bounce on the screen when the player has won
     if (targetX > width) {
       targetImageVX = targetImageVX * -1;
     }
@@ -154,7 +154,7 @@ function draw() {
       targetImageVY = targetImageVY * -1;
     }
 
-
+    // Make the sausage doc move on the screen according to velocity
     targetX = targetX + targetImageVX;
     targetY = targetY + targetImageVY;
     image(targetImage, targetX, targetY);
@@ -162,13 +162,14 @@ function draw() {
     // Tell them they won!
     text("HERE'S A TREAT!", width / 2, height / 2);
 
-    // Make the targetImage bigger on the screen and the text box when they win
+    // Make the targetImage bigger on the screen and the text box when the
+    //player has won
     noFill();
     noStroke();
     ellipse(targetX, targetY, targetImage.width, targetImage.height);
 
   }
-  // Add the text caption to the image
+  // Add the text caption to the image box
   textAlign(LEFT, TOP);
   textSize(30);
   fill(255, 0, 0);
@@ -188,14 +189,14 @@ function mousePressed() {
     // Make the targetImage size smaller each time we find the dog
     targetImageSize = targetImageSize * 0.75;
     console.log(targetImageSize);
-    // Reset the screen (stops the moving targetImage) to continue the game
+    // Reset the screen and stops the moving targetImage to continue the game
     // and find the targetImage
     targetImage.resize(targetImageSize, targetImageSize)
     gameOver = false;
     background("#ffff00");
     imageMode(CENTER);
 
-    // Copy the
+    // Copy the if(gameOVer) statement to continue to play the game
     // Use a for loop to draw as many decoys as we need
     for (let i = 0; i < numDecoys; i++) {
       // Choose a random location on the canvas for this decoy
