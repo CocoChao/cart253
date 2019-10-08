@@ -4,6 +4,7 @@
 
 Game - Chaser
 Pippin Barr
+Modified by: Carole Chao
 
 A "simple" game of cat and mouse. The player is a circle and can move with keys,
 if they overlap the (randomly moving) prey they "eat it" by sucking out its life
@@ -52,14 +53,22 @@ let preyEaten = 0;
 let preyTX = 0;
 let preyTY = 0;
 
+// Set the background Image variables
+let img;
+
+//preload()
+//Add background image of Space
+function preload() {
+  img = loadImage('assets/images/Space-Horizon-Editeg.jpg');
+}
+
 // setup()
 //
 // Sets up the basic elements of the game
 function setup() {
-  createCanvas(500, 500);
-
-  noStroke();
-
+  // Callback to display the image after loading ()
+  loadImage('assets/images/Space-Horizon-Editeg.jpg');
+  createCanvas(1136, 760);
   // We're using simple functions to separate code out
   setupPrey();
   setupPlayer();
@@ -93,7 +102,7 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(100, 100, 200);
+  background(image, [bg]);
   preyTX += 0.01;
   preyTY += 0.01;
 
@@ -139,7 +148,7 @@ function handleInput() {
     playerMaxSpeed = 7;
   } else {
     playerMaxSpeed = 2;
-}
+  }
 }
 
 // movePlayer()
@@ -180,7 +189,7 @@ function updateHealth() {
   playerHealth = constrain(playerHealth, 0, playerMaxHealth);
 
   // Reduce player's health faster when Shift key is Pressed
-    if (keyIsDown(SHIFT)) {
+  if (keyIsDown(SHIFT)) {
     playerHealth = playerHealth - 5;
   } else {
     playerHealth = playerHealth - 0.5;
@@ -190,7 +199,7 @@ function updateHealth() {
   if (playerHealth === 0) {
     // If so, the game is over
     gameOver = true;
-}
+  }
 }
 
 // checkEating()
