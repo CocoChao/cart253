@@ -57,12 +57,15 @@ let preyTY = 0;
 let img;
 // Change text font
 let myFont;
+// Add background sound
+let mySound;
 
 //preload()
 //Add background image of Space
 function preload() {
   img = loadImage('assets/images/Space-Horizon-Edited.jpg');
-  myFont = loadFont('assets/Turret_Road/TurretRoad-Regular.ttf')
+  myFont = loadFont('assets/Turret_Road/TurretRoad-Regular.ttf');
+  mySound = loadSound('assets/sounds/Spaceship_Takeoff-Richard-902554369.wav');
 }
 
 // setup()
@@ -70,8 +73,7 @@ function preload() {
 // Sets up the basic elements of the game
 function setup() {
   createCanvas(1136, 760);
-  stroke(255,204,0);
-  strokeWeight(2);
+  mySound.play();
 
   // We're using simple functions to separate code out
   setupPrey();
@@ -277,6 +279,8 @@ function movePrey() {
 function drawPrey() {
   fill(35, 204, 77, preyHealth);
   ellipse(preyX, preyY, preyRadius * 2);
+  stroke(255,204,0);
+  strokeWeight(2);
 }
 
 // drawPlayer()
@@ -292,12 +296,12 @@ function drawPlayer() {
 // Display text about the game being over!
 function showGameOver() {
   // Set up the font
-  textSize(32);
+  textSize(45);
   textAlign(CENTER, CENTER);
   fill(255);
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
-  gameOverText = gameOverText + "You ate " + preyEaten + " aliens\n";
+  gameOverText = gameOverText + "You killed " + preyEaten + " aliens\n";
   gameOverText = gameOverText + "before you died."
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
