@@ -53,17 +53,20 @@ let preyEaten = 0;
 let preyTX = 0;
 let preyTY = 0;
 
-// Set the background Image variables
+// The variables for the images
 let img;
+let img2;
 // Change text font
 let myFont;
 // Add background sound
 let mySound;
+let y = 0;
 
 //preload()
 //Add background image of Space
 function preload() {
   img = loadImage('assets/images/Space-Horizon-Edited.jpg');
+  img2 = loadImage('assets/images/tv-glitch-png.png');
   myFont = loadFont('assets/Turret_Road/TurretRoad-Regular.ttf');
   mySound = loadSound('assets/sounds/Spaceship_Takeoff-Richard-902554369.wav');
 }
@@ -108,9 +111,18 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(img,0,0);
+  background(img, 0, 0);
   preyTX += 0.01;
   preyTY += 0.01;
+
+  // Draw the moving yellow line from top to bottom of the canvas
+  stroke(226, 204, 0);
+  line(0, y, width, y);
+
+  y = y + 1;
+  if (y > height) {
+    y = 0;
+  }
 
   if (!gameOver) {
     handleInput();
@@ -218,6 +230,10 @@ function checkEating() {
   if (d < playerRadius + preyRadius) {
     // Increase the player health
     playerHealth = playerHealth + eatHealth;
+    // Increase the player radius
+    playerRadius = playerRadius + 0.5;
+    // Decrease the prey radius
+    preyRadius = preyRadius - 0.1;
     // Constrain to the possible range
     playerHealth = constrain(playerHealth, 0, playerMaxHealth);
     // Reduce the prey health
@@ -279,7 +295,7 @@ function movePrey() {
 function drawPrey() {
   fill(35, 204, 77, preyHealth);
   ellipse(preyX, preyY, preyRadius * 2);
-  stroke(255,204,0);
+  stroke(255, 204, 0);
   strokeWeight(2);
 }
 
@@ -296,9 +312,13 @@ function drawPlayer() {
 // Display text about the game being over!
 function showGameOver() {
   // Set up the font
+  textFont(myFont);
   textSize(45);
   textAlign(CENTER, CENTER);
   fill(255);
+  // Display the  image on the screen
+  image(img2, 0, 0);
+
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
   gameOverText = gameOverText + "You killed " + preyEaten + " aliens\n";
