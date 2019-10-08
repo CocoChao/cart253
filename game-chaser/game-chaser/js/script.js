@@ -22,28 +22,28 @@ let gameOver = false;
 // Player position, size, velocity
 let playerX;
 let playerY;
-let playerRadius = 25;
+let playerRadius = 35;
 let playerVX = 0;
 let playerVY = 0;
-let playerMaxSpeed = 2;
+let playerMaxSpeed = 3;
 // Player health
 let playerHealth;
-let playerMaxHealth = 255;
+let playerMaxHealth = 300;
 // Player fill color
-let playerFill = 50;
+let playerFill = 255;
 
 // Prey position, size, velocity
 let preyX;
 let preyY;
-let preyRadius = 25;
+let preyRadius = 30;
 let preyVX;
 let preyVY;
 let preyMaxSpeed = 4;
 // Prey health
 let preyHealth;
-let preyMaxHealth = 100;
-// Prey fill color
-let preyFill = 200;
+let preyMaxHealth = 255;
+// Prey fill green color
+let preyFill = (35, 204, 77);
 
 // Amount of health obtained per frame of "eating" (overlapping) the prey
 let eatHealth = 10;
@@ -55,20 +55,24 @@ let preyTY = 0;
 
 // Set the background Image variables
 let img;
+// Change text font
+let myFont;
 
 //preload()
 //Add background image of Space
 function preload() {
-  img = loadImage('assets/images/Space-Horizon-Editeg.jpg');
+  img = loadImage('assets/images/Space-Horizon-Edited.jpg');
+  myFont = loadFont('assets/Turret_Road/TurretRoad-Regular.ttf')
 }
 
 // setup()
 //
 // Sets up the basic elements of the game
 function setup() {
-  // Callback to display the image after loading ()
-  loadImage('assets/images/Space-Horizon-Editeg.jpg');
   createCanvas(1136, 760);
+  stroke(255,204,0);
+  strokeWeight(2);
+
   // We're using simple functions to separate code out
   setupPrey();
   setupPlayer();
@@ -102,7 +106,7 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(image, [bg]);
+  background(img,0,0);
   preyTX += 0.01;
   preyTY += 0.01;
 
@@ -271,7 +275,7 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-  fill(preyFill, preyHealth);
+  fill(35, 204, 77, preyHealth);
   ellipse(preyX, preyY, preyRadius * 2);
 }
 
@@ -290,10 +294,10 @@ function showGameOver() {
   // Set up the font
   textSize(32);
   textAlign(CENTER, CENTER);
-  fill(0);
+  fill(255);
   // Set up the text to display
   let gameOverText = "GAME OVER\n"; // \n means "new line"
-  gameOverText = gameOverText + "You ate " + preyEaten + " prey\n";
+  gameOverText = gameOverText + "You ate " + preyEaten + " aliens\n";
   gameOverText = gameOverText + "before you died."
   // Display it in the centre of the screen
   text(gameOverText, width / 2, height / 2);
