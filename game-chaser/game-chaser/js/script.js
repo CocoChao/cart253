@@ -108,8 +108,7 @@ function draw() {
 
     drawPrey();
     drawPlayer();
-  }
-  else {
+  } else {
     showGameOver();
   }
 }
@@ -121,24 +120,26 @@ function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
     playerVX = -playerMaxSpeed;
-  }
-  else if (keyIsDown(RIGHT_ARROW)) {
+  } else if (keyIsDown(RIGHT_ARROW)) {
     playerVX = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVX = 0;
   }
 
   // Check for vertical movement
   if (keyIsDown(UP_ARROW)) {
     playerVY = -playerMaxSpeed;
-  }
-  else if (keyIsDown(DOWN_ARROW)) {
+  } else if (keyIsDown(DOWN_ARROW)) {
     playerVY = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVY = 0;
   }
+  // Add the ability to "sprint" when the player holds down the shift key
+  if (keyIsDown(SHIFT)) {
+    playerMaxSpeed = 7;
+  } else {
+    playerMaxSpeed = 2;
+}
 }
 
 // movePlayer()
@@ -154,8 +155,7 @@ function movePlayer() {
   if (playerX < 0) {
     // Off the left side, so add the width to reset to the right
     playerX = playerX + width;
-  }
-  else if (playerX > width) {
+  } else if (playerX > width) {
     // Off the right side, so subtract the width to reset to the left
     playerX = playerX - width;
   }
@@ -163,8 +163,7 @@ function movePlayer() {
   if (playerY < 0) {
     // Off the top, so add the height to reset to the bottom
     playerY = playerY + height;
-  }
-  else if (playerY > height) {
+  } else if (playerY > height) {
     // Off the bottom, so subtract the height to reset to the top
     playerY = playerY - height;
   }
@@ -179,11 +178,19 @@ function updateHealth() {
   playerHealth = playerHealth - 0.5;
   // Constrain the result to a sensible range
   playerHealth = constrain(playerHealth, 0, playerMaxHealth);
+
+  // Reduce player's health faster when Shift key is Pressed
+    if (keyIsDown(SHIFT)) {
+    playerHealth = playerHealth - 5;
+  } else {
+    playerHealth = playerHealth - 0.5;
+    playerHealth = constrain(playerHealth, 0, playerMaxHealth);
+  }
   // Check if the player is dead (0 health)
   if (playerHealth === 0) {
     // If so, the game is over
     gameOver = true;
-  }
+}
 }
 
 // checkEating()
@@ -223,7 +230,7 @@ function movePrey() {
   // Change the prey's velocity at random intervals
   // random() will be < 0.05 5% of the time, so the prey
   // will change direction on 5% of frames
-  if (random()< 0.05) {
+  if (random() < 0.05) {
     // Set velocity based on the moment we want a values to get a new direction
     // and speed of movement
     //
@@ -240,15 +247,13 @@ function movePrey() {
   // Screen wrapping
   if (preyX < 0) {
     preyX = preyX + width;
-  }
-  else if (preyX > width) {
+  } else if (preyX > width) {
     preyX = preyX - width;
   }
 
   if (preyY < 0) {
     preyY = preyY + height;
-  }
-  else if (preyY > height) {
+  } else if (preyY > height) {
     preyY = preyY - height;
   }
 }
