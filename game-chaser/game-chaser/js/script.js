@@ -316,7 +316,7 @@ function showGameOver() {
   textSize(45);
   textAlign(CENTER, CENTER);
   fill(255);
-  // Display the  image on the screen
+  // Display the glitched TV screen image on the screen
   image(img2, 0, 0);
 
   // Set up the text to display
