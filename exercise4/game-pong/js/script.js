@@ -2,6 +2,7 @@
 
 // Pong
 // by Pippin Barr
+// modified by Carole Chao
 //
 // A "simple" implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
@@ -62,11 +63,21 @@ let rightPaddle = {
 // A variable to hold the beep sound we will play on bouncing
 let beepSFX;
 
+// A variable to display the number of successful collisions in game score
+let displayScore;
+
+// The variables for the images
+let image;
+let image2;
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
+// Load the image of the soccerball
+// Load the background image of football/soccer field
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
+  image = loadImage("assets/images/soccerball-transparent-png-28");
+  image2 = loadImage("assets/images/football-field-or-soccer-field-background");
 }
 
 // setup()
@@ -76,7 +87,7 @@ function preload() {
 // and velocities.
 function setup() {
   // Create canvas and set drawing modes
-  createCanvas(640, 480);
+  createCanvas(1300, 866);
   rectMode(CENTER);
   noStroke();
   fill(fgColor);
@@ -103,8 +114,8 @@ function setupPaddles() {
 // Calls the appropriate functions to run the game
 // See how tidy it looks?!
 function draw() {
-  // Fill the background
-  background(bgColor);
+  // Add background image
+  background(image2, 0, 0);
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -127,8 +138,7 @@ function draw() {
       // This is where we would likely count points, depending on which side
       // the ball went off...
     }
-  }
-  else {
+  } else {
     // Otherwise we display the message to start the game
     displayStartMessage();
   }
@@ -154,8 +164,7 @@ function handleInput(paddle) {
   else if (keyIsDown(paddle.downKey)) {
     // Move down
     paddle.vy = paddle.speed;
-  }
-  else {
+  } else {
     // Otherwise stop moving
     paddle.vy = 0;
   }
@@ -186,9 +195,13 @@ function ballIsOutOfBounds() {
   // Check for ball going off the sides
   if (ball.x < 0 || ball.x > width) {
     return true;
-  }
-  else {
+  } else {
     return false;
+  }
+  if (ball.x > 0 || ball.x < width) {
+    // Display the number of successful collision in the console
+    console.log("collision");
+
   }
 }
 
@@ -205,6 +218,8 @@ function checkBallWallCollision() {
     // Play our bouncing sound effect by rewinding and then playing
     beepSFX.currentTime = 0;
     beepSFX.play();
+    // ball.vx = 0;
+    // ball.vy = 0;
   }
 }
 
