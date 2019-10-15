@@ -4,8 +4,8 @@
 // by Pippin Barr
 // modified by Carole Chao
 //
-// A "simple" implementation of Pong with no scoring system
-// just the ability to play the game with the keyboard.
+// An improved version Pong with a scoring system and different aesthetic
+// with the ability to play the game with the keyboard.
 //
 // Up and down keys control the right hand paddle, W and S keys control
 // the left hand paddle
@@ -13,32 +13,26 @@
 // Whether the game has started
 let playing = false;
 
-// Game colors (using hexadecimal)
-let bgColor = 0;
-let fgColor = 255;
-
-// BALL
-
 // A ball object with the properties of
 // position, size, velocity, and speed
 let ball = {
   x: 0,
   y: 0,
-  size: 20,
+  size: 40,
   vx: 0,
   vy: 0,
   speed: 5
 }
 
 // PADDLES
-
+//
 // Basic definition of a left paddle object with its key properties of
 // position, size, velocity, and speed
 let leftPaddle = {
   x: 0,
   y: 0,
   w: 20,
-  h: 70,
+  h: 125,
   vy: 0,
   speed: 5,
   upKey: 87,
@@ -53,7 +47,7 @@ let rightPaddle = {
   x: 0,
   y: 0,
   w: 20,
-  h: 70,
+  h: 125,
   vy: 0,
   speed: 5,
   upKey: 38,
@@ -67,8 +61,9 @@ let beepSFX;
 let displayScore;
 
 // The variables for the images
-let image;
-let image2;
+let ballImage;
+let backgroundImage;
+
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
@@ -76,8 +71,8 @@ let image2;
 // Load the background image of football/soccer field
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
-  image = loadImage("assets/images/soccerball-transparent-png-28");
-  image2 = loadImage("assets/images/football-field-or-soccer-field-background");
+  ballImage = loadImage("assets/images/soccerball-transparent-png-28.png");
+  backgroundImage = loadImage("assets/images/football-field-or-soccer-field-background.jpg");
 }
 
 // setup()
@@ -88,9 +83,9 @@ function preload() {
 function setup() {
   // Create canvas and set drawing modes
   createCanvas(1300, 866);
+  beepSFX.play();
   rectMode(CENTER);
   noStroke();
-  fill(fgColor);
 
   setupPaddles();
   resetBall();
@@ -115,7 +110,7 @@ function setupPaddles() {
 // See how tidy it looks?!
 function draw() {
   // Add background image
-  background(image2, 0, 0);
+  background(backgroundImage,0,0);
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -288,7 +283,7 @@ function resetBall() {
 function displayStartMessage() {
   push();
   textAlign(CENTER, CENTER);
-  textSize(32);
+  textSize(40);
   text("CLICK TO START", width / 2, height / 2);
   pop();
 }
