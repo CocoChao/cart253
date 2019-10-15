@@ -36,7 +36,8 @@ let leftPaddle = {
   vy: 0,
   speed: 5,
   upKey: 87,
-  downKey: 83
+  downKey: 83,
+  score: 0,
 }
 
 // RIGHT PADDLE
@@ -51,17 +52,15 @@ let rightPaddle = {
   vy: 0,
   speed: 5,
   upKey: 38,
-  downKey: 40
+  downKey: 40,
+  score: 0,
 }
 
 // A variable to hold the beep sound we will play on bouncing
 let beepSFX;
 
-// A variable to display the number of successful collisions in game score
-let displayScore;
-
 // The variables for the images
-let ballImage;
+let ballImage = ball;
 let backgroundImage;
 
 // preload()
@@ -86,6 +85,7 @@ function setup() {
   beepSFX.play();
   rectMode(CENTER);
   noStroke();
+  frameRate(1);
 
   setupPaddles();
   resetBall();
@@ -96,11 +96,11 @@ function setup() {
 // Sets the starting positions of the two paddles
 function setupPaddles() {
   // Initialise the left paddle position
-  leftPaddle.x = 0 + leftPaddle.w;
+  leftPaddle.x = 125 + leftPaddle.w;
   leftPaddle.y = height / 2;
 
   // Initialise the right paddle position
-  rightPaddle.x = width - rightPaddle.w;
+  rightPaddle.x = width - (rightPaddle.w + 125);
   rightPaddle.y = height / 2;
 }
 
@@ -129,6 +129,7 @@ function draw() {
     // inside a conditional!)
     if (ballIsOutOfBounds()) {
       // If it went off either side, reset it
+
       resetBall();
       // This is where we would likely count points, depending on which side
       // the ball went off...
@@ -138,10 +139,23 @@ function draw() {
     displayStartMessage();
   }
 
+  console.log(rightPaddle.score + "LEFTIES");
+  console.log(leftPaddle.score + "RIGHTIES");
+
   // We always display the paddles and ball so it looks like Pong!
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
   displayBall();
+}
+
+// To update the console when player makes a score
+function paddleScore(){
+  if (ball.x < 0 ) {
+  rightPaddle.score += 1;
+  }
+  else if (ball.x > width) {
+  leftPaddle.score += 1;
+  }
 }
 
 // handleInput()
@@ -187,17 +201,17 @@ function updateBall() {
 // Checks if the ball has gone off the left or right
 // Returns true if so, false otherwise
 function ballIsOutOfBounds() {
-  // Check for ball going off the sides
-  if (ball.x < 0 || ball.x > width) {
+    if (ball.x < 0 ) {
+    rightPaddle.score += 1;
     return true;
-  } else {
-    return false;
-  }
-  if (ball.x > 0 || ball.x < width) {
-    // Display the number of successful collision in the console
-    console.log("collision");
-
-  }
+    }
+    else if (ball.x > width) {
+    leftPaddle.score += 1;
+    return true;
+    }
+    else {
+      return false;
+    }
 }
 
 // checkBallWallCollision()
