@@ -68,9 +68,6 @@ let beepSFX;
 // The variables for the image
 let backgroundImage;
 
-
-let random;
-
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
@@ -217,13 +214,13 @@ function handleInput(paddle) {
   function ballIsOutOfBounds() {
     if (ball.x < 0) {
       rightPaddle.score += 1;
-      leftPaddle.h -= 4;
-      leftPaddle.w -= 2;
+      leftPaddle.h -= 4, constrain(leftPaddle.h,0,75);
+      leftPaddle.w -= 2, constrain(leftPaddle.w,0,20);
       return true;
     } else if (ball.x > width) {
       leftPaddle.score += 1;
-      rightPaddle.h -= 4;
-      rightPaddle.w -= 2;
+      rightPaddle.h -= 4, constrain(rightPaddle.h,0,75);
+      rightPaddle.w -= 2, constrain(rightPaddle.w,0,20);
       return true;
     } else {
       return false;
@@ -302,12 +299,11 @@ function handleInput(paddle) {
   //
   // Sets the starting position and velocity of the ball
   function resetBall() {
-    // Initialise the ball's position and velocity
+    // Initialise the ball's position and set random velocity
     ball.x = width / 2;
     ball.y = height / 2;
-    ball.vx = ball.speed;
-    ball.vy = ball.speed;
-
+    ball.vx = random(0,25),constrain(ball.vx,-ball.speed,ball.speed);
+    ball.vy = random(0,25),constrain(ball.vy,-ball.speed,ball.speed)
   }
 
   // displayStartMessage()
