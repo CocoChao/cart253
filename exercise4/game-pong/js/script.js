@@ -302,8 +302,8 @@ function handleInput(paddle) {
     // Initialise the ball's position and set random velocity
     ball.x = width / 2;
     ball.y = height / 2;
-    ball.vx = random(0,25),constrain(ball.vx,-ball.speed,ball.speed);
-    ball.vy = random(0,25),constrain(ball.vy,-ball.speed,ball.speed)
+    ball.vx = random(0,15),constrain(ball.vx,-ball.speed,ball.speed);
+    ball.vy = random(0,15),constrain(ball.vy,-ball.speed,ball.speed)
   }
 
   // displayStartMessage()
