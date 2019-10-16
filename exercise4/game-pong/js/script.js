@@ -212,13 +212,18 @@ function handleInput(paddle) {
   // ballIsOutOfBounds()
   //
   // Checks if the ball has gone off the left or right
+  // Make the loosing paddle smaller .
   // Returns true if so, false otherwise
   function ballIsOutOfBounds() {
     if (ball.x < 0) {
       rightPaddle.score += 1;
+      leftPaddle.h -= 4;
+      leftPaddle.w -= 2;
       return true;
     } else if (ball.x > width) {
       leftPaddle.score += 1;
+      rightPaddle.h -= 4;
+      rightPaddle.w -= 2;
       return true;
     } else {
       return false;
@@ -302,6 +307,7 @@ function handleInput(paddle) {
     ball.y = height / 2;
     ball.vx = ball.speed;
     ball.vy = ball.speed;
+
   }
 
   // displayStartMessage()
