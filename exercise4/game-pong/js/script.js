@@ -131,8 +131,7 @@ function draw() {
     // (Note how we can use a function that returns a truth value
     // inside a conditional!)
     if (ballIsOutOfBounds()) {
-      // If it went off either side, reset it
-
+      // If it went off either side, reset
       resetBall();
       // This is where we would likely count points, depending on which side
       // the ball went off...
@@ -302,8 +301,14 @@ function handleInput(paddle) {
     // Initialise the ball's position and set random velocity
     ball.x = width / 2;
     ball.y = height / 2;
-    ball.vx = random(0,7),constrain(ball.vx,-ball.speed,ball.speed);
-    ball.vy = random(0,7),constrain(ball.vy,-ball.speed,ball.speed)
+    ball.vx = random(0,10),constrain(ball.vx,-ball.speed,ball.speed);
+    ball.vy = random(0,10),constrain(ball.vy,-ball.speed,ball.speed)
+
+    // iF THE LEFT SIDE WON,
+    // ball.vx = -ball.speed
+    // ball.VY = - (random(1, ball.speed) )
+    // else if the right side won
+    // ball.VY = random(1. ball.speed)
   }
 
   // displayStartMessage()
