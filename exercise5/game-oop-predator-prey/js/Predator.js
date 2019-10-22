@@ -33,6 +33,7 @@ class firstPredator {
     this.leftKey = left;
     this.rightKey = right;
     this.shiftKey = run;
+    this.score = 0;
     this.animalImage = animalImage;
   }
 
@@ -118,7 +119,7 @@ class firstPredator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
-        score++;
+        this.score++;
       }
     }
   }
@@ -137,6 +138,6 @@ class firstPredator {
     // Add the score on top of the predators
     textSize(30);
     fill(71, 71, 71);
-    text("Score: " + score, this.x, this.y);
+    text("Score: " + this.score, this.x, this.y);
 }
 }

@@ -24,8 +24,6 @@ let antelope;
 let zebra;
 let bee;
 
-// Add a variable to keep score
-let score = 0;
 // Add variable for the font
 let quicksand;
 
