@@ -7,11 +7,19 @@
 // The predators loses health over time, so must keep eating to survive.
 
 // Our predators
+let tigerImage;
+let leopardImage;
+let bearImage;
+
 let tiger;
 let leopard;
 let bear;
 
 // The three prey
+let antelopeImage;
+let zebraImage;
+let beeImage;
+
 let antelope;
 let zebra;
 let bee;
@@ -28,12 +36,12 @@ let quicksand;
 // the preys (the antelope, the zebra and the bee) and the background picture.
 
 function preload() {
- tigerPredator = loadImage("assets/images/tiger_emoji.jpg");
- leopardPredator = loadImage("assets/images/leopard_emoji.png");
- bearPredator = loadImage("assets/images/teddy_bear_emoji.png");
- antelopePrey = loadImage("assets/images/antelope_toy.jpg");
- zebraPrey = loadImage("assets/images/zebra_toy.jpg");
- beePrey = loadImage("assets/images/bee_toy.jpg");
+ tigerImage = loadImage("assets/images/tiger_emoji.png");
+ leopardImage = loadImage("assets/images/leopard_emoji.png");
+ bearImage = loadImage("assets/images/teddy_bear_emoji.png");
+ antelopeImage = loadImage("assets/images/antelope_toy.png");
+ zebraImage = loadImage("assets/images/zebra_toy.png");
+ beeImage = loadImage("assets/images/bee_toy.png");
  backdrop = loadImage("assets/images/background_image_bedtop.jpg");
  quicksand = loadFont("assets/quicksand/static/Quicksand-Medium.ttf");
 }
@@ -45,12 +53,12 @@ function preload() {
 function setup() {
   createCanvas(1008,1008);
   textFont(quicksand);
-  tiger = new firstPredator(100, 100, 5, color(204, 159, 69), 40);
-  leopard = new secondPredator(100, 100, 15, color(200, 175, 175), 35);
-  bear = new thirdPredator(100, 100, 25, color(120, 114, 97), 45);
-  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
+  tiger = new firstPredator(100, 100, 5, color(204, 159, 69), 40, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint
+  leopard = new firstPredator(100, 100, 15, color(200, 175, 175), 35, leopardImage, 87, 83, 65, 68, 70); // press F to sprint
+  bear = new firstPredator(100, 100, 25, color(120, 114, 97), 45, bearImage, 73, 75, 74, 76, 72); // press H key to sprint
+  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50, antelopeImage);
+  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60, zebraImage);
+  bee = new Prey(100, 100, 20, color(255, 255, 0), 10, beeImage);
 }
 
 // draw()
