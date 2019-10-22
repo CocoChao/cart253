@@ -135,9 +135,9 @@ class firstPredator {
     pop();
     image(tigerPredator);
     // Add the score on top of the screen
-    textSize(25);
-    text("Score: " + score, 25, 20);
-    fill(110, 80, 78);
+    textSize(30);
+    fill(204, 159, 69);
+    text("Score: " + score, 875, 35);
   }
 }
 
@@ -272,9 +272,9 @@ class secondPredator {
     ellipse(this.x, this.y, this.radius * 2);
     pop();
     // Add the score on top of the screen
-    textSize(25);
-    text("Score: " + score, 125, 20);
-    fill(0,102,153);
+    textSize(30);
+    fill(0,0,0);
+    text("Score: " + score, 35, 980);
   }
 }
 
@@ -409,8 +409,8 @@ class thirdPredator {
     ellipse(this.x, this.y, this.radius * 2);
     pop();
     // Add the score on top of the screen
-    textSize(25);
-    text("Score: " + score, 225, 20);
-    fill(0,102,153);
+    textSize(30);
+    fill(120, 114, 97);
+    text("Score: " + score, 25, 35);
   }
 }

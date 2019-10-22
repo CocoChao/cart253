@@ -18,6 +18,9 @@ let bee;
 
 // Add a variable to keep score
 let score = 0;
+// Add variable for the font
+let quicksand;
+
 
 // preload()
 //
@@ -29,6 +32,7 @@ function preload() {
  leopardPredator = loadImage("assets/images/leopard_emoji.png");
  bearPredator = loadImage("assets/images/teddy_bear_emoji.png");
  backdrop = loadImage("assets/images/background_image_bedtop.jpg");
+ quicksand = loadFont("assets/quicksand/static/Quicksand-Medium.ttf");
 }
 
 // setup()
@@ -37,9 +41,10 @@ function preload() {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(1008,1008);
-  tiger = new firstPredator(100, 100, 5, color(200, 200, 0), 40);
+  textFont(quicksand);
+  tiger = new firstPredator(100, 100, 5, color(204, 159, 69), 40);
   leopard = new secondPredator(100, 100, 15, color(200, 175, 175), 35);
-  bear = new thirdPredator(100, 100, 25, color(240, 240, 150), 45);
+  bear = new thirdPredator(100, 100, 25, color(120, 114, 97), 45);
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
