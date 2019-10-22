@@ -19,13 +19,14 @@ let bee;
 
 // preload()
 //
-// Preload pictures the predators: the tiger,
-// the leopard and the bear.
+// Preload pictures of the predators (the tiger, the leopard and the bear)
+// and background picture.
 
 function preload() {
  tiger = loadImage("assets/images/tiger_emoji.jpg");
  leopard = loadImage("assets/images/leopard_emoji.png");
- bear = loadImage("assets/images/teddy_bear_emoji.png")
+ bear = loadImage("assets/images/teddy_bear_emoji.png");
+ backdrop = loadImage("assets/images/background_image_bedtop.jpg");
 }
 
 // setup()
@@ -33,7 +34,7 @@ function preload() {
 // Sets up a canvas
 // Creates objects for the predator and three prey
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1008,1008);
   tiger = new firstPredator(100, 100, 5, color(200, 200, 0), 40);
   leopard = new secondPredator(100, 100, 15, color(200, 175, 175), 35);
   bear = new thirdPredator(100, 100, 25, color(240, 240, 150), 45);
@@ -47,7 +48,7 @@ function setup() {
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
   // Clear the background to black
-  background(0);
+  background(backdrop,0,0);
 
   // Handle input for the predators
   tiger.handleInput();
