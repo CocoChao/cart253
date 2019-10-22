@@ -169,7 +169,7 @@ class secondPredator {
     this.downKey = 83;
     this.leftKey = 65;
     this.rightKey = 68;
-    this.shiftKey = 16;
+    this.shiftKey = 70; // press F key to sprint
   }
 
   // handleInput
@@ -306,7 +306,7 @@ class thirdPredator {
     this.downKey = 75;
     this.leftKey = 74;
     this.rightKey = 76;
-    this.shiftKey = 16;
+    this.shiftKey = 72; // press H key to sprint
 
   }
 

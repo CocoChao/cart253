@@ -24,13 +24,16 @@ let quicksand;
 
 // preload()
 //
-// Preload pictures of the predators (the tiger, the leopard and the bear)
-// and background picture.
+// Preload pictures of the predators (the tiger, the leopard and the bear),
+// the preys (the antelope, the zebra and the bee) and the background picture.
 
 function preload() {
  tigerPredator = loadImage("assets/images/tiger_emoji.jpg");
  leopardPredator = loadImage("assets/images/leopard_emoji.png");
  bearPredator = loadImage("assets/images/teddy_bear_emoji.png");
+ antelopePrey = loadImage("assets/images/antelope_toy.jpg");
+ zebraPrey = loadImage("assets/images/zebra_toy.jpg");
+ beePrey = loadImage("assets/images/bee_toy.jpg");
  backdrop = loadImage("assets/images/background_image_bedtop.jpg");
  quicksand = loadFont("assets/quicksand/static/Quicksand-Medium.ttf");
 }
