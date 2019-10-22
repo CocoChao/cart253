@@ -41,7 +41,7 @@ function preload() {
  zebraImage = loadImage("assets/images/zebra_toy.png");
  beeImage = loadImage("assets/images/bee_toy.png");
  backdrop = loadImage("assets/images/background_image_bedtop.jpg");
- quicksand = loadFont("assets/quicksand/static/Quicksand-Medium.ttf");
+ quicksand = loadFont("assets/Quicksand/Quicksand-Regular.otf");
 }
 
 // setup()
