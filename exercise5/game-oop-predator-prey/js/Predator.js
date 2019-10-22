@@ -10,6 +10,7 @@ class firstPredator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
+  // firstPredator is the tiger (dark yellow)
   constructor(x, y, speed, fillColor, radius) {
     // Position
     this.x = x;
@@ -20,17 +21,18 @@ class firstPredator {
     this.speed = speed;
     // Health properties
     this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.health = this.maxHealth;
     this.healthLossPerMove = 0.1;
     this.healthGainPerEat = 1;
     // Display properties
     this.fillColor = fillColor;
-    this.radius = this.health; // Radius is defined in terms of health
+    this.radius = this.health;
     // Input properties
     this.upKey = UP_ARROW;
     this.downKey = DOWN_ARROW;
     this.leftKey = LEFT_ARROW;
     this.rightKey = RIGHT_ARROW;
+    this.shiftKey = SHIFT;
   }
 
   // handleInput
@@ -41,22 +43,24 @@ class firstPredator {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
+    }
+    // Add the ability to "sprint" when the player holds down the shift key
+    if (keyIsDown(this.shiftKey)) {
+      this.speed = this.speed * 2;
+    } else {
+      this.speed = this.speed;
     }
   }
 
@@ -84,15 +88,13 @@ class firstPredator {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
@@ -139,6 +141,7 @@ class secondPredator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
+  // secondPredator is the leopard (grey-ish pink)
   constructor(x, y, speed, fillColor, radius) {
     // Position
     this.x = x;
@@ -149,17 +152,18 @@ class secondPredator {
     this.speed = speed;
     // Health properties
     this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.health = this.maxHealth;
     this.healthLossPerMove = 0.1;
     this.healthGainPerEat = 1;
     // Display properties
     this.fillColor = fillColor;
-    this.radius = this.health; // Radius is defined in terms of health
+    this.radius = this.health;
     // Input properties
     this.upKey = 87;
     this.downKey = 83;
     this.leftKey = 65;
     this.rightKey = 68;
+    this.shiftKey = 16;
   }
 
   // handleInput
@@ -170,22 +174,24 @@ class secondPredator {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
+    }
+    // Add the ability to "sprint" when the player holds down the shift key
+    if (keyIsDown(this.shiftKey)) {
+      this.speed = 7;
+    } else {
+      this.speed = 2;
     }
   }
 
@@ -213,15 +219,13 @@ class secondPredator {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
@@ -268,6 +272,7 @@ class thirdPredator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
+  // thirdPredator is a bear (yellow)
   constructor(x, y, speed, fillColor, radius) {
     // Position
     this.x = x;
@@ -289,6 +294,8 @@ class thirdPredator {
     this.downKey = 75;
     this.leftKey = 74;
     this.rightKey = 76;
+    this.shiftKey = 16;
+
   }
 
   // handleInput
@@ -299,22 +306,24 @@ class thirdPredator {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
+    }
+    // Add the ability to "sprint" when the player holds down the shift key
+    if (keyIsDown(this.shiftKey)) {
+      this.speed = this.speed * 2;
+    } else {
+      this.speed = this.speed;
     }
   }
 
@@ -342,15 +351,13 @@ class thirdPredator {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }

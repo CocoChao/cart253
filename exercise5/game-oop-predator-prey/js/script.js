@@ -16,6 +16,18 @@ let antelope;
 let zebra;
 let bee;
 
+
+// preload()
+//
+// Preload pictures the predators: the tiger,
+// the leopard and the bear.
+
+function preload() {
+ tiger = loadImage("assets/images/tiger_emoji.jpg");
+ leopard = loadImage("assets/images/leopard_emoji.png");
+ bear = loadImage("assets/images/teddy_bear_emoji.png")
+}
+
 // setup()
 //
 // Sets up a canvas
