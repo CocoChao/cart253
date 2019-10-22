@@ -117,6 +117,7 @@ class firstPredator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+        score ++;
       }
     }
   }
@@ -132,6 +133,11 @@ class firstPredator {
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
+    image(tigerPredator);
+    // Add the score on top of the screen
+    textSize(25);
+    text("Score: " + score, 25, 20);
+    fill(110, 80, 78);
   }
 }
 
@@ -248,6 +254,7 @@ class secondPredator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+        score ++;
       }
     }
   }
@@ -256,6 +263,7 @@ class secondPredator {
   //
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
+  // Show how many prey the predator has eaten
   display() {
     push();
     noStroke();
@@ -263,6 +271,10 @@ class secondPredator {
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
+    // Add the score on top of the screen
+    textSize(25);
+    text("Score: " + score, 125, 20);
+    fill(0,102,153);
   }
 }
 
@@ -380,6 +392,7 @@ class thirdPredator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+        score ++;
       }
     }
   }
@@ -395,5 +408,9 @@ class thirdPredator {
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
+    // Add the score on top of the screen
+    textSize(25);
+    text("Score: " + score, 225, 20);
+    fill(0,102,153);
   }
 }

@@ -16,6 +16,8 @@ let antelope;
 let zebra;
 let bee;
 
+// Add a variable to keep score
+let score = 0;
 
 // preload()
 //
@@ -23,9 +25,9 @@ let bee;
 // and background picture.
 
 function preload() {
- tiger = loadImage("assets/images/tiger_emoji.jpg");
- leopard = loadImage("assets/images/leopard_emoji.png");
- bear = loadImage("assets/images/teddy_bear_emoji.png");
+ tigerPredator = loadImage("assets/images/tiger_emoji.jpg");
+ leopardPredator = loadImage("assets/images/leopard_emoji.png");
+ bearPredator = loadImage("assets/images/teddy_bear_emoji.png");
  backdrop = loadImage("assets/images/background_image_bedtop.jpg");
 }
 
