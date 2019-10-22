@@ -94,7 +94,5 @@ class Prey {
     // Default radius
     this.radius = this.health;
     // Multiply by 2 the number of prey each time a prey is fully consummed
-    // Display the number of prey fully consummed
-    console.log(this + "PREY!");
   }
 }
