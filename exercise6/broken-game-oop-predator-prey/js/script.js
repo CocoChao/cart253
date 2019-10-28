@@ -2,6 +2,7 @@
 
 // Predator-Prey Simulation
 // by Pippin Barr
+// Fixed by Carole Chao
 //
 // Creates a predator and three prey (of different sizes and speeds)
 // The predator chases the prey using the arrow keys and consumes them.
@@ -36,7 +37,7 @@ functionsetup() {
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
   // Clear the background to black
-  backgroun(0);
+  background(0); //////////////// FIXED
 
   // Handle input for the tiger
 
