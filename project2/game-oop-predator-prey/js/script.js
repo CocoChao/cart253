@@ -6,12 +6,41 @@
 // The predator loses health over time, so must keep eating to survive.
 
 // Our predator
+let tigerImage;
+let pigImage;
+let bearImage;
+
 let tiger;
+let pig;
+let bear;
 
 // The three prey
-let antelope;
-let zebra;
-let bee;
+let lollipopImage;
+let candyImage;
+let cottonImage;
+
+let lollipop;
+let candy;
+let cotton;
+
+// Add variable for font
+let
+
+// preload()
+//
+// Preload pictures of the predators (the tiger, the pig and the bear),
+// the preys (the lollipop, the candy and the cotton) and the background picture.
+
+function preload() {
+ tigerImage = loadImage("assets/images/tiger-Disney-tsum-tsum.png");
+ pigImage = loadImage("assets/images/disney-tsum-tsum-piglet.png");
+ bearImage = loadImage("assets/images/disney-tsum-tsum-clipart-winnie-the-pooh.png");
+ lollipopImage = loadImage("assets/images/candy-lollipop.png");
+ candyImage = loadImage("assets/images/clipart-candy-dulce-vector-png.png");
+ cottonImage = loadImage("assets/images/cotton-candy-clipart.png");
+ backdrop = loadImage("assets/images/gumball-machine.jpg");
+ quicksand = loadFont("assets/Quicksand/Quicksand-Regular.otf");
+}
 
 // setup()
 //
@@ -20,9 +49,9 @@ let bee;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
-  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
+  lollipop = new Prey(100, 100, 10, color(255, 100, 10), 50);
+  candy = new Prey(100, 100, 8, color(255, 255, 255), 60);
+  cotton = new Prey(100, 100, 20, color(255, 255, 0), 10);
 }
 
 // draw()
@@ -37,18 +66,18 @@ function draw() {
 
   // Move all the "animals"
   tiger.move();
-  antelope.move();
-  zebra.move();
-  bee.move();
+  lollipopImage.move();
+  candy.move();
+  cotton.move();
 
   // Handle the tiger eating any of the prey
-  tiger.handleEating(antelope);
-  tiger.handleEating(zebra);
-  tiger.handleEating(bee);
+  tiger.handleEating(lollipop);
+  tiger.handleEating(candy);
+  tiger.handleEating(cotton);
 
   // Display all the "animals"
   tiger.display();
-  antelope.display();
-  zebra.display();
-  bee.display();
+  lollipop.display();
+  candy.display();
+  cotton.display();
 }
