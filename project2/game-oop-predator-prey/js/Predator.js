@@ -10,7 +10,7 @@ class Predator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, fillColor, radius) {
+  constructor(x, y, speed, fillColor, radius, animalImage, up, down, left, right, run) {
     // Position
     this.x = x;
     this.y = y;
@@ -27,10 +27,12 @@ class Predator {
     this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
     // Input properties
-    this.upKey = UP_ARROW;
-    this.downKey = DOWN_ARROW;
-    this.leftKey = LEFT_ARROW;
-    this.rightKey = RIGHT_ARROW;
+    this.upKey = up;
+    this.downKey = down;
+    this.leftKey = left;
+    this.rightKey = right;
+    this.score = 0;
+    this.animalImage = animalImage;
   }
 
   // handleInput
@@ -57,6 +59,12 @@ class Predator {
     }
     else {
       this.vy = 0;
+    }
+    // Add the ability to "sprint" when the player holds down the shift key
+    if (keyIsDown(this.shiftKey)) {
+      this.speed = this.speed * 1.5;
+    } else {
+      this.speed = this.speed;
     }
   }
 
@@ -115,6 +123,7 @@ class Predator {
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
         prey.reset();
+        this.score++;
       }
     }
   }
@@ -124,11 +133,15 @@ class Predator {
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
+    image(this.animalImage, this.x, this.y, this.radius *2, this.radius*2);
     push();
     noStroke();
     fill(this.fillColor);
     this.radius = this.health;
-    ellipse(this.x, this.y, this.radius * 2);
     pop();
+    // Add the score on top of the predators
+    textSize(30);
+    fill(71, 71, 71);
+    text("Score: " + this.score, this.x, this.y);
   }
 }

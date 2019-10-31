@@ -24,7 +24,7 @@ let candy;
 let cotton;
 
 // Add variable for font
-let
+let candy;
 
 // preload()
 //
@@ -39,7 +39,7 @@ function preload() {
  candyImage = loadImage("assets/images/clipart-candy-dulce-vector-png.png");
  cottonImage = loadImage("assets/images/cotton-candy-clipart.png");
  backdrop = loadImage("assets/images/gumball-machine.jpg");
- quicksand = loadFont("assets/Quicksand/Quicksand-Regular.otf");
+ candy = loadFont("assets/images/Emilys_Candy/EmilysCandy-Regular.ttf");
 }
 
 // setup()
@@ -47,8 +47,10 @@ function preload() {
 // Sets up a canvas
 // Creates objects for the predator and three prey
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1550,1800);
   tiger = new Predator(100, 100, 5, color(200, 200, 0), 40);
+  pig = new Predator(100,100,15, color(150,150,150),30);
+  bear = new Predator(100,100,20, color(120, 114, 97),45);
   lollipop = new Prey(100, 100, 10, color(255, 100, 10), 50);
   candy = new Prey(100, 100, 8, color(255, 255, 255), 60);
   cotton = new Prey(100, 100, 20, color(255, 255, 0), 10);
@@ -63,9 +65,13 @@ function draw() {
 
   // Handle input for the tiger
   tiger.handleInput();
+  pig.handleInput();
+  bear.handleInput();
 
   // Move all the "animals"
   tiger.move();
+  pig.move();
+  bear.move();
   lollipopImage.move();
   candy.move();
   cotton.move();
@@ -75,8 +81,20 @@ function draw() {
   tiger.handleEating(candy);
   tiger.handleEating(cotton);
 
+  // Handle the pig eating any of the prey
+  pig.handleEating(lollipop);
+  pig.handleEating(candy);
+  pig.handleEating(cotton);
+
+  // Handle the bear eating any of the prey
+  bear.handleEating(lollipop);
+  bear.handleEating(candy);
+  bear.handleEating(cotton);
+
   // Display all the "animals"
   tiger.display();
+  pig.display();
+  bear.display();
   lollipop.display();
   candy.display();
   cotton.display();
