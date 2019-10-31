@@ -24,7 +24,7 @@ let candy;
 let cotton;
 
 // Add variable for font
-let candy;
+let emilysCandy;
 
 // preload()
 //
@@ -39,7 +39,7 @@ function preload() {
  candyImage = loadImage("assets/images/clipart-candy-dulce-vector-png.png");
  cottonImage = loadImage("assets/images/cotton-candy-clipart.png");
  backdrop = loadImage("assets/images/gumball-machine.jpg");
- candy = loadFont("assets/images/Emilys_Candy/EmilysCandy-Regular.ttf");
+ emilysCandy = loadFont("assets/images/Emilys_Candy/EmilysCandy-Regular.ttf");
 }
 
 // setup()
@@ -72,7 +72,7 @@ function draw() {
   tiger.move();
   pig.move();
   bear.move();
-  lollipopImage.move();
+  lollipop.move();
   candy.move();
   cotton.move();
 

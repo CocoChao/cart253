@@ -130,10 +130,9 @@ class Predator {
 
   // display
   //
-  // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-    image(this.animalImage, this.x, this.y, this.radius *2, this.radius*2);
+    image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();
     noStroke();
     fill(this.fillColor);
