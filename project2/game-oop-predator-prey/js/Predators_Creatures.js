@@ -4,7 +4,7 @@
 // controlled by the arrow keys. It can move around
 // the screen and consume Prey objects to maintain its health.
 
-class Predator {
+class Creatures {
 
   // constructor
   //
@@ -31,6 +31,7 @@ class Predator {
     this.downKey = down;
     this.leftKey = left;
     this.rightKey = right;
+    this.shiftKey = run;
     this.score = 0;
     this.animalImage = animalImage;
   }
@@ -118,6 +119,9 @@ class Predator {
       // Increase predator health and constrain it to its possible range
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
+      // Play our crinkle sound effect by rewinding and then playing
+      crinkleSFX.currentTime = 0;
+      crinkleSFX.play();
       // Decrease prey health by the same amount
       prey.health -= this.healthGainPerEat;
       // Check if the prey died and reset it if so
@@ -132,6 +136,9 @@ class Predator {
   //
   // with a radius the same size as its current health.
   display() {
+    if (this.health === 0){
+      return;
+    }
     image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();
     noStroke();

@@ -4,7 +4,7 @@
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
 
-class Prey {
+class Sweets {
 
   // constructor
   //
@@ -19,11 +19,11 @@ class Prey {
     this.vy = 0;
     this.speed = speed;
     // Time properties for noise() function
-    this.tx = random(0, 1000); // To make x and y noise different
-    this.ty = random(0, 1000); // we use random starting values
+    this.tx = random(0, 1000);
+    this.ty = random(0, 1000);
     // Health properties
     this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.health = this.maxHealth;
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health;
