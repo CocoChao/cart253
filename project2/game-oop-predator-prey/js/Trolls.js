@@ -4,6 +4,7 @@ class Trolls {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
+  // Make the Elf eat the candies wherever he goes, steal if from the creatures
   constructor(x, y, speed, fillColor, radius, animalImage) {
     // Position
     this.x = x;
@@ -18,7 +19,7 @@ class Trolls {
     // Health properties
     this.maxHealth = radius;
     this.health = this.maxHealth;
-    this.healthGainPerEat = 2;
+    this.healthGainPerEat = 5;
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health;
@@ -73,7 +74,7 @@ class Trolls {
     // Check if the distance is less than their two radius (an overlap)
     if (d < this.radius + food.radius) {
       // Predator keeps constant health
-      this.health = this.healthGainPerEat;
+      // this.health = this.healthGainPerEat;
       // Play our crinkle sound effect by rewinding and then playing
       crinkleSFX.currentTime = 0;
       crinkleSFX.play();
@@ -93,7 +94,7 @@ class Trolls {
     push();
     noStroke();
     fill(this.fillColor);
-    this.radius = this.health;
+    // this.radius = this.health;
     pop();
   }
 

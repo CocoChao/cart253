@@ -39,6 +39,10 @@ let crinkleSFX;
 let startGame = false;
 let gameOver = false;
 
+// An arrays of food to the game
+let edibleNumbers = [1,2,3];
+
+
 // preload()
 //
 // Preload pictures of the creatures (the tiger, the pig and the bear),
@@ -74,14 +78,16 @@ function setup() {
   createCanvas(1300, 1000);
   textFont(emilysCandy);
   crinkleSFX.play();
-  tiger = new Creatures(100, 100, 5, color(200, 200, 0), 40, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
-  pig = new Creatures(100, 100, 15, color(150, 150, 150), 30, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
-  bear = new Creatures(100, 100, 20, color(120, 114, 97), 45, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
-  elf = new Trolls(100,100,25, color(100,100,100),35, elfImage);
-  lollipop = new Food(100, 100, 10, color(255, 100, 10), 50, lollipopImage);
-  candy = new Food(100, 100, 8, color(255, 255, 255), 60, candyImage);
-  cotton = new Food(100, 100, 20, color(255, 255, 0), 10, cottonImage);
-  apple = new Fruit(100,100,25, color(255,220,225),55, appleImage);
+
+  tiger = new Creatures(100, 100, 5, color(200, 200, 0), 50, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
+  pig = new Creatures(100, 100, 15, color(150, 150, 150), 50, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
+  bear = new Creatures(100, 100, 20, color(120, 114, 97), 50, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
+  elf = new Trolls(100,100,25, color(100,100,100),40, elfImage);
+  lollipop = new Food(100, 100, 10, color(255, 100, 10), 40, lollipopImage);
+  candy = new Food(100, 100, 8, color(255, 255, 255), 40, candyImage);
+  cotton = new Food(100, 100, 20, color(255, 255, 0), 40, cottonImage);
+  apple = new Fruit(100,100,25, color(255,220,225),40, appleImage);
+
 }
 
 // draw()
@@ -151,22 +157,25 @@ function draw() {
     text("SWEET SUGAR CANDYLAND", width / 2, height / 2);
     textSize(30);
     textAlign(CENTER);
-    text("Press Spacebar to play.", width / 2, height / 2 + 50);
+    text("Press SPACEBAR to play.", width / 2, height / 2 + 50);
     text("Use keys Up, Down, Right, Left to move Tiger", width / 2, height / 2 + 100);
     text("Use keys W, A, S, D to move Pig.", width / 2, height / 2 + 150);
     text("Use keys I, J, K, L to move Winnie the Pooh.\n GOOD LUCK!.", width / 2, height / 2 + 200);
   } if (gameOver === true){
 
     // Display the CandyLand path on the screen with Game Over text
-    fill(227, 101, 91);
+    fill(93, 62, 120);
     textFont(emilysCandy);
     textSize(45);
+    textStyle(BOLD);
     textAlign(CENTER, CENTER);
     image(endScreenBackdrop, 0, 0);
 
     // Set up the text to display
-    let gameOverText = "POUF! They dissapeared!\n"; // \n means "new line"
-    gameOverText = gameOverText + "You guys ate " + this.score + " candies\n";
+    let gameOverText = "POUF!\n"; // \n means "new line"
+    gameOverText = gameOverText + "Tiger ate " + tiger.score + " candies\n";
+    gameOverText = gameOverText + "Pig ate " + pig.score + " candies\n";
+    gameOverText = gameOverText + "Bear ate " + bear.score + " candies\n";
     gameOverText = gameOverText + "before you left Candyland."
     // Display it in the centre of the screen
     text(gameOverText, width / 2, height / 2);

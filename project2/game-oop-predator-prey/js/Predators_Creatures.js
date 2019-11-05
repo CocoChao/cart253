@@ -129,6 +129,10 @@ class Creatures {
         food.reset();
         this.score++;
       }
+      // If creatures eats the poinsonous apple, they shrink faster
+      if (apple.health < 0){
+        this.health = this.health - this.healthGainPerEat * -10;
+      }
     }
   }
 //
