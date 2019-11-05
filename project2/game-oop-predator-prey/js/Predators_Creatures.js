@@ -25,7 +25,7 @@ class Creatures {
     this.healthGainPerEat = 1;
     // Display properties
     this.fillColor = fillColor;
-    this.radius = this.health; 
+    this.radius = this.health;
     // Input properties
     this.upKey = up;
     this.downKey = down;
@@ -114,7 +114,7 @@ class Creatures {
   handleEating(prey) {
     // Calculate distance from this predator to the prey
     let d = dist(this.x, this.y, prey.x, prey.y);
-    // Check if the distance is less than their two radii (an overlap)
+    // Check if the distance is less than their two radius (an overlap)
     if (d < this.radius + prey.radius) {
       // Increase predator health and constrain it to its possible range
       this.health += this.healthGainPerEat;
@@ -128,6 +128,10 @@ class Creatures {
       if (prey.health < 0) {
         prey.reset();
         this.score++;
+      // // Check if the predator dies
+      // if (this.health === 0){
+      //   predator.reset();
+      //////////////////
       }
     }
   }
@@ -135,6 +139,7 @@ class Creatures {
   // display
   //
   // with a radius the same size as its current health.
+  // When a predator reaches 0 health, it stays intact
   display() {
     if (this.health === 0){
       return;

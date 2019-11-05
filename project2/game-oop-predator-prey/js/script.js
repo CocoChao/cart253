@@ -77,13 +77,11 @@ function setup() {
   tiger = new Creatures(100, 100, 5, color(200, 200, 0), 40, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
   pig = new Creatures(100, 100, 15, color(150, 150, 150), 30, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
   bear = new Creatures(100, 100, 20, color(120, 114, 97), 45, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
-  elf = new Creatures(100,100,20, color(100,100,100),35, elfImage);
-  creatures.push(elf);
+  elf = new Trolls(100,100,20, color(100,100,100),35, elfImage);
   lollipop = new Food(100, 100, 10, color(255, 100, 10), 50, lollipopImage);
   candy = new Food(100, 100, 8, color(255, 255, 255), 60, candyImage);
   cotton = new Food(100, 100, 20, color(255, 255, 0), 10, cottonImage);
   apple = new Fruit(100,100,25, color(255,220,225),55, appleImage);
-  food.push(apple);
 }
 
 // draw()
@@ -182,11 +180,6 @@ function keyPressed() {
   // Show game over screen when predator dies
   function showGameOver() {
     if (predator.health = 0) {
-      gameOver = true;
+      gameOver === true;
     }
-  }
-//
-for (let i = 0; i < shapes.length; i++) {
-    shapes[i].update();
-    shapes[i].display();
   }

@@ -1,4 +1,4 @@
-class Fruit extends Food{
+class Fruit {
   // constructor
   //
   // Sets the initial values for the Predator's properties
