@@ -36,7 +36,8 @@ let startGame = false;
 // preload()
 //
 // Preload pictures of the creatures (the tiger, the pig and the bear),
-// the sweets (the lollipop, the candy and the cotton) and the background picture.
+// the sweets (the lollipop, the candy and the cotton) and the background pictures
+// for the Start Screen and Play Screen.
 
 function preload() {
  tigerImage = loadImage("assets/images/tiger-Disney-tsum-tsum.png");
@@ -54,8 +55,10 @@ function preload() {
 
 // setup()
 //
-// Sets up a canvas
-// Creates objects for the predator and three prey
+// Set up a canvas
+// Creates objects for the predators and preys
+// Set the text font and sound effects every time a Predator eats Prey
+
 function setup() {
   createCanvas(1300,1000);
   textFont(emilysCandy);
@@ -69,7 +72,7 @@ function setup() {
 }
 
 // draw()
-//
+// Add the ability to start playing when Spacebar is pressed and change screens
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
 
@@ -134,6 +137,7 @@ function keyPressed(){
 if(keyCode == 32){
   startGame = true;
 }
+//
 function showGameOver() {
   // Set up the font
   textFont(emilysCandy);
