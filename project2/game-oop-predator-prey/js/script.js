@@ -31,6 +31,8 @@ let emilysCandy;
 // eats a candy
 let crinkleSFX;
 
+let startGame = false;
+
 // preload()
 //
 // Preload pictures of the creatures (the tiger, the pig and the bear),
@@ -43,7 +45,9 @@ function preload() {
  lollipopImage = loadImage("assets/images/candy-lollipop.png");
  candyImage = loadImage("assets/images/clipart-candy-dulce-vector-png.png");
  cottonImage = loadImage("assets/images/cotton-candy-clipart.png");
- backdrop = loadImage("assets/images/gumball-machine.jpg");
+ backdrop = loadImage("assets/images/candyland_background.png");
+ startScreenBackdrop = loadImage("assets/images/start_screen-candy-background.jpg");
+ endScreenBackdrop = loadImage("assets/images/candyland-clipart-path-2.png");
  emilysCandy = loadFont("assets/images/Emilys_Candy/EmilysCandy-Regular.ttf");
  crinkleSFX = new Audio("assets/sounds/candy-wrapper-crinkle.wav");
 }
@@ -53,7 +57,7 @@ function preload() {
 // Sets up a canvas
 // Creates objects for the predator and three prey
 function setup() {
-  createCanvas(1033,1200);
+  createCanvas(1300,1000);
   textFont(emilysCandy);
   crinkleSFX.play();
   tiger = new Creatures(100, 100, 5, color(200, 200, 0), 40, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
@@ -68,9 +72,10 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  // Add background image of gumball machine
-  background(backdrop,0,0);
 
+if(startGame === true){
+  // Start Screen with game appears
+  background(backdrop,0,0);
   // Handle input for the tiger
   tiger.handleInput();
   pig.handleInput();
@@ -106,4 +111,43 @@ function draw() {
   lollipop.display();
   candy.display();
   cotton.display();
+  }
+  else{
+    // Start Screen image of Candy themed background with Game instructions
+    // and title.
+    background(startScreenBackdrop,0,0);
+    fill(227, 101, 91);
+    textSize(75);
+    textAlign(CENTER);
+    text("SWEET SUGAR CANDYLAND",width/2, height/2);
+    textSize(30);
+    textAlign(CENTER);
+    text("Press Spacebar to play.", width/2, height/2 + 50);
+    text("Use keys Up, Down, Right, Left to move Tiger", width/2, height/2 +100);
+    text("Use keys W, A, S, D to move Pig.", width/2, height/2 + 150);
+    text("Use keys I, J, K, L to move Winnie the Pooh.\n GOOD LUCK!.",width/2, height/2 +200);
+  }
+}
+
+// Start playing when pressing Spacebar
+function keyPressed(){
+if(keyCode == 32){
+  startGame = true;
+}
+function showGameOver() {
+  // Set up the font
+  textFont(emilysCandy);
+  textSize(45);
+  textAlign(CENTER, CENTER);
+  fill(227, 101, 91);
+  // Display the glitched TV screen image on the screen
+  image(endScreenBackdrop, 0, 0);
+
+  // Set up the text to display
+  let gameOverText = "POUF! They dissapeared!\n"; // \n means "new line"
+  gameOverText = gameOverText + "You ate " + this.score + " candies\n";
+  gameOverText = gameOverText + "before you left Candyland."
+  // Display it in the centre of the screen
+  text(gameOverText, width / 2, height / 2);
+}
 }
