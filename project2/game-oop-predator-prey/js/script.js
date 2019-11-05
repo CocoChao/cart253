@@ -55,11 +55,11 @@ function preload() {
   lollipopImage = loadImage("assets/images/candy-lollipop.png");
   candyImage = loadImage("assets/images/clipart-candy-dulce-vector-png.png");
   cottonImage = loadImage("assets/images/cotton-candy-clipart.png");
-  appleImage = loadImage("assets/images/cartoon-apple-transparent.jpg");
+  appleImage = loadImage("assets/images/Red-Apple-PNG-Photo.png");
 //Preload Background, font and sound
   backdrop = loadImage("assets/images/candyland_background.png");
   startScreenBackdrop = loadImage("assets/images/start_screen-candy-background.jpg");
-  endScreenBackdrop = loadImage("assets/images/candyland-clipart-path-2.png");
+  endScreenBackdrop = loadImage("assets/images/candyland-wallpapers.png");
   emilysCandy = loadFont("assets/images/Emilys_Candy/EmilysCandy-Regular.ttf");
   crinkleSFX = new Audio("assets/sounds/candy-wrapper-crinkle.wav");
 }
@@ -77,7 +77,7 @@ function setup() {
   tiger = new Creatures(100, 100, 5, color(200, 200, 0), 40, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
   pig = new Creatures(100, 100, 15, color(150, 150, 150), 30, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
   bear = new Creatures(100, 100, 20, color(120, 114, 97), 45, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
-  elf = new Trolls(100,100,20, color(100,100,100),35, elfImage);
+  elf = new Trolls(100,100,25, color(100,100,100),35, elfImage);
   lollipop = new Food(100, 100, 10, color(255, 100, 10), 50, lollipopImage);
   candy = new Food(100, 100, 8, color(255, 255, 255), 60, candyImage);
   cotton = new Food(100, 100, 20, color(255, 255, 0), 10, cottonImage);
@@ -131,7 +131,7 @@ function draw() {
     elf.handleEating(cotton);
     elf.handleEating(apple);
 
-    // Display all the "animals"
+    // Display all the "creatures"
     tiger.display();
     pig.display();
     bear.display();
@@ -140,6 +140,7 @@ function draw() {
     candy.display();
     cotton.display();
     apple.display();
+    checkGameOver();
   } else {
     // Start Screen image of Candy themed background with Game instructions
     // and title.
@@ -155,16 +156,17 @@ function draw() {
     text("Use keys W, A, S, D to move Pig.", width / 2, height / 2 + 150);
     text("Use keys I, J, K, L to move Winnie the Pooh.\n GOOD LUCK!.", width / 2, height / 2 + 200);
   } if (gameOver === true){
+
     // Display the CandyLand path on the screen with Game Over text
+    fill(227, 101, 91);
     textFont(emilysCandy);
     textSize(45);
     textAlign(CENTER, CENTER);
-    fill(227, 101, 91);
     image(endScreenBackdrop, 0, 0);
 
     // Set up the text to display
     let gameOverText = "POUF! They dissapeared!\n"; // \n means "new line"
-    gameOverText = gameOverText + "You ate " + this.score + " candies\n";
+    gameOverText = gameOverText + "You guys ate " + this.score + " candies\n";
     gameOverText = gameOverText + "before you left Candyland."
     // Display it in the centre of the screen
     text(gameOverText, width / 2, height / 2);
@@ -178,8 +180,8 @@ function keyPressed() {
   }
 }
   // Show game over screen when predator dies
-  function showGameOver() {
-    if (predator.health = 0) {
-      gameOver === true;
+  function checkGameOver() {
+    if (tiger.health === 0 && pig.health === 0 && bear.health === 0) {
+      gameOver = true;
     }
   }

@@ -2,7 +2,7 @@
 //
 // A class that represents a simple predator
 // controlled by the arrow keys. It can move around
-// the screen and consume Prey objects to maintain its health.
+// the screen and consume food objects to maintain its health.
 
 class Creatures {
 
@@ -108,33 +108,36 @@ class Creatures {
 
   // handleEating
   //
-  // Takes a Prey object as an argument and checks if the predator
-  // overlaps it. If so, reduces the prey's health and increases
-  // the predator's. If the prey dies, it gets reset.
-  handleEating(prey) {
-    // Calculate distance from this predator to the prey
-    let d = dist(this.x, this.y, prey.x, prey.y);
+  // Takes a food object as an argument and checks if the predator
+  // overlaps it. If so, reduces the food's health and increases
+  // the predator's. If the food dies, it gets reset.
+  handleEating(food) {
+    // Calculate distance from this predator to the food
+    let d = dist(this.x, this.y, food.x, food.y);
     // Check if the distance is less than their two radius (an overlap)
-    if (d < this.radius + prey.radius) {
+    if (d < this.radius + food.radius) {
       // Increase predator health and constrain it to its possible range
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       // Play our crinkle sound effect by rewinding and then playing
       crinkleSFX.currentTime = 0;
       crinkleSFX.play();
-      // Decrease prey health by the same amount
-      prey.health -= this.healthGainPerEat;
-      // Check if the prey died and reset it if so
-      if (prey.health < 0) {
-        prey.reset();
+      // Decrease food health by the same amount
+      food.health -= this.healthGainPerEat;
+      // Check if the food died and reset it if so
+      if (food.health < 0) {
+        food.reset();
         this.score++;
-      // // Check if the predator dies
-      // if (this.health === 0){
-      //   predator.reset();
-      //////////////////
       }
     }
   }
+//
+handleHealth(food){
+  // Check if the predator dies
+  // if (this.health === 0){
+  //   predator.reset();
+  //////////////////
+}
 
   // display
   //
@@ -143,6 +146,7 @@ class Creatures {
   display() {
     if (this.health === 0){
       return;
+    // gameOver = true ?
     }
     image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();

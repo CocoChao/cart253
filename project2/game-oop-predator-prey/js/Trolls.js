@@ -1,4 +1,4 @@
-class Trolls{
+class Trolls {
 
   // constructor
   //
@@ -12,28 +12,17 @@ class Trolls{
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
+    // Time properties for noise() function
+    this.tx = random(0, 1000);
+    this.ty = random(0, 1000);
     // Health properties
     this.maxHealth = radius;
     this.health = this.maxHealth;
-    this.healthLossPerMove = 0.1;
-    this.healthGainPerEat = 1;
+    this.healthGainPerEat = 2;
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health;
-    // Input properties
-    this.upKey = up;
-    this.downKey = down;
-    this.leftKey = left;
-    this.rightKey = right;
-    this.shiftKey = run;
-    this.score = 0;
     this.animalImage = animalImage;
-  }
-  // Both the endpoint coordinates should jiggle
-  update() {
-    super.update(); // Do the generic Shape update()
-    this.x2 += random(-1, 1);
-    this.y2 += random(-1, 1);
   }
   // move
   //
@@ -41,12 +30,17 @@ class Trolls{
   // Lowers health (as a cost of living)
   // Handles wrapping
   move() {
+    // Set velocity via noise()
+    this.vx = map(noise(this.tx), 0, 1, -this.speed, this.speed);
+    this.vy = map(noise(this.ty), 0, 1, -this.speed, this.speed);
+    // Update health
+    this.health = constrain(this.health, 0, this.maxHealth);
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    // Update health
-    this.health = this.health - this.healthLossPerMove;
-    this.health = constrain(this.health, 0, this.maxHealth);
+    // Update time properties
+    this.tx += 0.01;
+    this.ty += 0.01;
     // Handle wrapping
     this.handleWrapping();
   }
@@ -70,29 +64,37 @@ class Trolls{
   }
   // handleEating
   //
-  // Takes a Prey object as an argument and checks if the predator
-  // overlaps it. If so, reduces the prey's health and increases
-  // the predator's. If the prey dies, it gets reset.
-  handleEating(prey) {
-    // Calculate distance from this predator to the prey
-    let d = dist(this.x, this.y, prey.x, prey.y);
+  // Takes a food object as an argument and checks if the predator
+  // overlaps it. If so, reduces the food's health and increases
+  // the predator's. If the food dies, it gets reset.
+  handleEating(food) {
+    // Calculate distance from this predator to the food
+    let d = dist(this.x, this.y, food.x, food.y);
     // Check if the distance is less than their two radius (an overlap)
-    if (d < this.radius + prey.radius) {
-      // Increase predator health and constrain it to its possible range
-      this.health += this.healthGainPerEat;
-      this.health = constrain(this.health, 0, this.maxHealth);
+    if (d < this.radius + food.radius) {
+      // Predator keeps constant health
+      this.health = this.healthGainPerEat;
       // Play our crinkle sound effect by rewinding and then playing
       crinkleSFX.currentTime = 0;
       crinkleSFX.play();
-      // Decrease prey health by the same amount
-      prey.health -= this.healthGainPerEat;
-      // Check if the prey died and reset it if so
-      if (prey.health < 0) {
-        prey.reset();
-        // // Check if the predator dies
-        // if (this.health = 0){
-        //   predator.reset();
-        //////////////////
+      // Decrease food health by the same amount
+      food.health -= this.healthGainPerEat;
+      // Check if the food dissapears and reset it if so
+      if (food.health < 0) {
+        food.reset();
       }
     }
   }
+  display() {
+    if (this.health === 0){
+      return;
+    }
+    image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
+    push();
+    noStroke();
+    fill(this.fillColor);
+    this.radius = this.health;
+    pop();
+  }
+
+}
