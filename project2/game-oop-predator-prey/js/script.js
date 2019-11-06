@@ -77,10 +77,10 @@ function setup() {
   creaturesGroup[2] = new Creatures(100, 100, 20, color(120, 114, 97), 50, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
   elfGroup[0] = new Trolls(100,100,25, color(100,100,100),40, elfImage);
 // put the food+fruit in array groups
-  foodGroup[0] = new Food(100, 100, 10, color(255, 100, 10), 40, lollipopImage);
-  foodGroup[1] = new Food(100, 100, 8, color(255, 255, 255), 40, candyImage);
-  foodGroup[2] = new Food(100, 100, 20, color(255, 255, 0), 40, cottonImage);
-  fruitGroup[0] = new Fruit(100,100,25, color(255,220,225),40, appleImage);
+  foodGroup[0] = new Food(100, 100, 14, color(255, 100, 10), 40, lollipopImage);
+  foodGroup[1] = new Food(100, 100, 10, color(255, 255, 255), 40, candyImage);
+  foodGroup[2] = new Food(100, 100, 17, color(255, 255, 0), 40, cottonImage);
+  fruitGroup[0] = new Fruit(100,100,10, color(255,220,225),40, appleImage);
 
 }
 
@@ -165,11 +165,11 @@ function draw() {
     textAlign(CENTER, CENTER);
     image(endScreenBackdrop, 0, 0);
 
-    // Set up the text to display
+    // Set up the text to display with array groups
     let gameOverText = "POUF!\n"; // \n means "new line"
-    gameOverText = gameOverText + "Tiger ate " + tiger.score + " candies\n";
-    gameOverText = gameOverText + "Pig ate " + pig.score + " candies\n";
-    gameOverText = gameOverText + "Bear ate " + bear.score + " candies\n";
+    gameOverText = gameOverText + "Tiger ate " + creaturesGroup[0].score + " candies\n";
+    gameOverText = gameOverText + "Pig ate " + creaturesGroup[1].score + " candies\n";
+    gameOverText = gameOverText + "Bear ate " + creaturesGroup[2].score + " candies\n";
     gameOverText = gameOverText + "before leaving Candyland."
     // Display it in the centre of the screen
     text(gameOverText, width / 2, height / 2);
@@ -182,9 +182,9 @@ function keyPressed() {
     startGame = true;
   }
 }
-  // Show game over screen when predator dies
+  // Show game over screen when predator dies with array groups
   function checkGameOver() {
-    if (tiger.health === 0 && pig.health === 0 && bear.health === 0) {
+    if (creaturesGroup[0].health === 0 && creaturesGroup[1].health === 0 && creaturesGroup[2].health === 0) {
       gameOver = true;
     }
   }

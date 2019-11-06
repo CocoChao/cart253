@@ -21,7 +21,7 @@ class Creatures {
     // Health properties
     this.maxHealth = radius;
     this.health = this.maxHealth;
-    this.healthLossPerMove = 0.1;
+    this.healthLossPerMove = 0.05;
     this.healthGainPerEat = 1;
     // Display properties
     this.fillColor = fillColor;
@@ -129,11 +129,10 @@ class Creatures {
         food.reset();
         this.score++;
       }
-      // If creatures eats the poinsonous apple, they dissapear except the elf
-      if (apple.health < 0){
-        this.health = this.health - this.healthGainPerEat * -10;
-      }
     }
+    // If creatures eats the poinsonous apple, they dissapear except the elf
+    if (fruitGroup[0].health < 0){
+      this.health = this.health + this.healthLossPerMove * 100 ;}
   }
 //
 handleHealth(food){
