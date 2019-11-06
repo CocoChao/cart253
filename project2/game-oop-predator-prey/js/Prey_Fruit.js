@@ -64,8 +64,7 @@ class Fruit {
 
   // display
   //
-  // Draw the prey as an ellipse on the canvas
-  // with a radius the same size as its current health.
+  // Display the image of the preys on the canvas
   display() {
     image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();

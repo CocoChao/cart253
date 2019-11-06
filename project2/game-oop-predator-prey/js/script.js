@@ -38,8 +38,8 @@ let fruitGroup = [];
 // preload()
 //
 // Preload pictures of the creatures (the tiger, the pig and the bear),
-// the Food (the lollipop, the candy and the cotton) and the background pictures
-// for the Start Screen and Play Screen.
+// the Food (the lollipop, the candy and the cotton), the background pictures
+// and soundFX for the Start Screen, Play Screen and Game Over screen.
 
 function preload() {
 //Preload Predators Image
@@ -165,7 +165,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     image(endScreenBackdrop, 0, 0);
 
-    // Set up the text to display with array groups
+    // Set up the text to display with array groups with each player's score
     let gameOverText = "POUF!\n"; // \n means "new line"
     gameOverText = gameOverText + "Tiger ate " + creaturesGroup[0].score + " candies\n";
     gameOverText = gameOverText + "Pig ate " + creaturesGroup[1].score + " candies\n";

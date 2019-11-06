@@ -1,6 +1,6 @@
 // Predator
 //
-// A class that represents a simple predator
+// A class that represents all the predators
 // controlled by the arrow keys. It can move around
 // the screen and consume food objects to maintain its health.
 

@@ -2,7 +2,7 @@ class Trolls {
 
   // constructor
   //
-  // Sets the initial values for the Predator's properties
+  // Sets the initial values for the Stealer's properties
   // Either sets default values or uses the arguments provided
   // Make the Elf eat the candies wherever he goes, steal if from the creatures
   constructor(x, y, speed, fillColor, radius, animalImage) {
@@ -28,7 +28,7 @@ class Trolls {
   // move
   //
   // Updates the position according to velocity
-  // Lowers health (as a cost of living)
+  // Doesn't lose health
   // Handles wrapping
   move() {
     // Set velocity via noise()

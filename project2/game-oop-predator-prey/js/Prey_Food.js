@@ -1,6 +1,6 @@
 // Prey
 //
-// A class that represents a simple prey that moves
+// A class that represents all the preys that moves
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
 
@@ -8,7 +8,7 @@ class Food {
 
   // constructor
   //
-  // Sets the initial values for the Predator's properties
+  // Sets the initial values for the Prey's properties
   // Either sets default values or uses the arguments provided
   constructor(x, y, speed, fillColor, radius, animalImage) {
     // Position
@@ -71,8 +71,7 @@ class Food {
 
   // display
   //
-  // Draw the prey as an ellipse on the canvas
-  // with a radius the same size as its current health.
+  // Display the image of the preys on the canvas
   display() {
     image(this.animalImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();
