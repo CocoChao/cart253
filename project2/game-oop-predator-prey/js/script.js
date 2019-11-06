@@ -1,32 +1,22 @@
 // Predator-Prey Simulation
 // by Pippin Barr
-// Modified by Carole Chao
+// Improved by Carole Chao
 //
-// Creates a predator and three prey (of different sizes and speeds)
-// The predator chases the prey using the arrow keys and consumes them.
+// Creates predators, preys and a stealer (of different sizes and speeds)
+// The predators chase the preys using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
 
-// Our Creatures
+// Set variables for Creatures and elf images
 let tigerImage;
 let pigImage;
 let bearImage;
 let elfImage;
 
-let tiger;
-let pig;
-let bear;
-let elf;
-
-// The Food: the Sweets and Fruits
+// Set variables for the Food and Fruit images
 let lollipopImage;
 let candyImage;
 let cottonImage;
 let appleImage;
-
-let lollipop;
-let candy;
-let cotton;
-let apple;
 
 // Add variable for font
 let emilysCandy;
@@ -39,9 +29,11 @@ let crinkleSFX;
 let startGame = false;
 let gameOver = false;
 
-// An arrays of food to the game
-let edibleNumbers = [1,2,3];
-
+// Add empty groups arrays for predators and preys
+let creaturesGroup = [];
+let elfGroup = [];
+let foodGroup = [];
+let fruitGroup = [];
 
 // preload()
 //
@@ -79,14 +71,16 @@ function setup() {
   textFont(emilysCandy);
   crinkleSFX.play();
 
-  tiger = new Creatures(100, 100, 5, color(200, 200, 0), 50, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
-  pig = new Creatures(100, 100, 15, color(150, 150, 150), 50, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
-  bear = new Creatures(100, 100, 20, color(120, 114, 97), 50, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
-  elf = new Trolls(100,100,25, color(100,100,100),40, elfImage);
-  lollipop = new Food(100, 100, 10, color(255, 100, 10), 40, lollipopImage);
-  candy = new Food(100, 100, 8, color(255, 255, 255), 40, candyImage);
-  cotton = new Food(100, 100, 20, color(255, 255, 0), 40, cottonImage);
-  apple = new Fruit(100,100,25, color(255,220,225),40, appleImage);
+// put the creatures and elf in array groups
+  creaturesGroup[0] = new Creatures(100, 100, 5, color(200, 200, 0), 50, tigerImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16); // press Shift key to sprint);
+  creaturesGroup[1] = new Creatures(100, 100, 15, color(150, 150, 150), 50, pigImage, 87, 83, 65, 68, 70); // press F to sprint);
+  creaturesGroup[2] = new Creatures(100, 100, 20, color(120, 114, 97), 50, bearImage, 73, 75, 74, 76, 72); // press H key to sprint);
+  elfGroup[0] = new Trolls(100,100,25, color(100,100,100),40, elfImage);
+// put the food+fruit in array groups
+  foodGroup[0] = new Food(100, 100, 10, color(255, 100, 10), 40, lollipopImage);
+  foodGroup[1] = new Food(100, 100, 8, color(255, 255, 255), 40, candyImage);
+  foodGroup[2] = new Food(100, 100, 20, color(255, 255, 0), 40, cottonImage);
+  fruitGroup[0] = new Fruit(100,100,25, color(255,220,225),40, appleImage);
 
 }
 
@@ -99,53 +93,53 @@ function draw() {
     // Start Screen with game appears
     background(backdrop, 0, 0);
     // Handle input for all the predators
-    tiger.handleInput();
-    pig.handleInput();
-    bear.handleInput();
+    creaturesGroup[0].handleInput();
+    creaturesGroup[1].handleInput();
+    creaturesGroup[2].handleInput();
 
     // Move all the "animals"
-    tiger.move();
-    pig.move();
-    bear.move();
-    elf.move();
-    lollipop.move();
-    candy.move();
-    cotton.move();
-    apple.move();
+    creaturesGroup[0].move();
+    creaturesGroup[1].move();
+    creaturesGroup[2].move();
+    elfGroup[0].move();
+    foodGroup[0].move();
+    foodGroup[1].move();
+    foodGroup[2].move();
+    fruitGroup[0].move();
 
     // Handle the tiger eating any Food
-    tiger.handleEating(lollipop);
-    tiger.handleEating(candy);
-    tiger.handleEating(cotton);
-    tiger.handleEating(apple);
+    creaturesGroup[0].handleEating(foodGroup[0]);
+    creaturesGroup[0].handleEating(foodGroup[1]);
+    creaturesGroup[0].handleEating(foodGroup[2]);
+    creaturesGroup[0].handleEating(fruitGroup[0]);
 
     // Handle the pig eating any Food
-    pig.handleEating(lollipop);
-    pig.handleEating(candy);
-    pig.handleEating(cotton);
-    pig.handleEating(apple);
+    creaturesGroup[1].handleEating(foodGroup[0]);
+    creaturesGroup[1].handleEating(foodGroup[1]);
+    creaturesGroup[1].handleEating(foodGroup[2]);
+    creaturesGroup[1].handleEating(fruitGroup[0]);
 
     // Handle the bear eating any Food
-    bear.handleEating(lollipop);
-    bear.handleEating(candy);
-    bear.handleEating(cotton);
-    bear.handleEating(apple);
+    creaturesGroup[2].handleEating(foodGroup[0]);
+    creaturesGroup[2].handleEating(foodGroup[1]);
+    creaturesGroup[2].handleEating(foodGroup[2]);
+    creaturesGroup[2].handleEating(fruitGroup[0]);
 
     // Handle the Evil Elves eating any Food
-    elf.handleEating(lollipop);
-    elf.handleEating(candy);
-    elf.handleEating(cotton);
-    elf.handleEating(apple);
+    elfGroup[0].handleEating(foodGroup[0]);
+    elfGroup[0].handleEating(foodGroup[1]);
+    elfGroup[0].handleEating(foodGroup[2]);
+    elfGroup[0].handleEating(fruitGroup[0]);
 
     // Display all the "creatures"
-    tiger.display();
-    pig.display();
-    bear.display();
-    elf.display();
-    lollipop.display();
-    candy.display();
-    cotton.display();
-    apple.display();
+    creaturesGroup[0].display();
+    creaturesGroup[1].display();
+    creaturesGroup[2].display();
+    elfGroup[0].display();
+    foodGroup[0].display();
+    foodGroup[1].display();
+    foodGroup[2].display();
+    fruitGroup[0].display();
     checkGameOver();
   } else {
     // Start Screen image of Candy themed background with Game instructions
@@ -176,7 +170,7 @@ function draw() {
     gameOverText = gameOverText + "Tiger ate " + tiger.score + " candies\n";
     gameOverText = gameOverText + "Pig ate " + pig.score + " candies\n";
     gameOverText = gameOverText + "Bear ate " + bear.score + " candies\n";
-    gameOverText = gameOverText + "before you left Candyland."
+    gameOverText = gameOverText + "before leaving Candyland."
     // Display it in the centre of the screen
     text(gameOverText, width / 2, height / 2);
   }
