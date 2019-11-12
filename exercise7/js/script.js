@@ -71,8 +71,8 @@ function preload(){
   redCarImage = loadImage("assets/images/Race-Car-PNG-HD.png");
   // Preload tool images
   toolOneImage = loadImage("assets/images/Tool1.png");
-  toolTwoImage = loadImages("assets/images/tool2.png");
-  toolThreeImage = loadImages("assets/images/tool3.png");
+  toolTwoImage = loadImage("assets/images/tool2.png");
+  toolThreeImage = loadImage("assets/images/tool3.png");
   toolFourImage = loadImage("assets/images/tool4.png");
   toolFiveImage = loadImage("assets/images/tool5.png");
   toolSixImage = loadImage("assets/images/tool6.png");
@@ -80,7 +80,7 @@ function preload(){
   toolEightImage = loadImage("assets/images/tool8.png");
   toolNineImage = loadImage("assets/images/tool9.png");
   // Preload obstacle images
-  barriers = loadImages("assets/images/clip-art-vector-construction.png");
+  barriers = loadImage("assets/images/clip-art-vector-construction.png");
   // Preload Background, font, sounds and music
   backdrop = loadImage("assets/images/");
   startScreenBackdrop = loadImage("assets/images/");
