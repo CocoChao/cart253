@@ -53,7 +53,7 @@ let startGame = false;
 let gamerOver = false;
 
 // Add empty groups arrays for cars and tools
-let VehiclesGroup = [];
+let vehiclesGroup = [];
 let toolsGroups = [];
 let obstacles = [];
 
