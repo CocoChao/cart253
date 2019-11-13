@@ -11,7 +11,7 @@ class Vehicle {
 // Sets the initial values for the Vehicle's properties
 // Either sets default values or uses the arguments provided
 // Vehicles are skyBlueCar, darkBlueCar, yellowCar and redCar
-constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right, run) {
+constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right, sprint) {
     // Position
     this.x = x;
     this.y = y;
@@ -32,7 +32,7 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
     this.downKey = down;
     this.leftKey = left;
     this.rightKey = right;
-    this.shiftKey = run;
+    this.shiftKey = sprint;
     this.score = 0;
     this.elementImage = elementImage;
   }
@@ -106,19 +106,19 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
   // Takes a Prey object as an argument and checks if the predator
   // overlaps it. If so, reduces the prey's health and increases
   // the predator's. If the prey dies, it gets reset.
-  handleEating(prey) {
+  handleEating(instrument) {
     // Calculate distance from this predator to the prey
-    let d = dist(this.x, this.y, prey.x, prey.y);
+    let d = dist(this.x, this.y, instrument.x, instrument.y);
     // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + prey.radius) {
+    if (d < this.radius + instrument.radius) {
       // Increase predator health and constrain it to its possible range
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       // Decrease prey health by the same amount
-      prey.health -= this.healthGainPerEat;
+      instrument.health -= this.healthGainPerEat;
       // Check if the prey died and reset it if so
-      if (prey.health < 0) {
-        prey.reset();
+      if (instrument.health < 0) {
+        instrument.reset();
         this.score++;
       }
     }
@@ -129,6 +129,9 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
+    if (this.health === 0){
+      return;
+    }
     image(this.elementImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();
     noStroke();
