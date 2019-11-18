@@ -63,6 +63,7 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
       this.speed = this.speed * 1.5;
     } else {
       this.speed = this.speed;
+    carFlyBySFX.play // play sound effects when speeding
     }
   }
 
@@ -116,7 +117,9 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
       this.health = constrain(this.health, 0, this.maxHealth);
       // Decrease prey health by the same amount
       instrument.health -= this.healthGainPerEat;
-      // Check if the prey died and reset it if so
+      // Add sound effect when instrument/prey is eaten
+      carIgnitionSFX.play();
+      // Check if the prey died, reset it if so and play sound effects
       if (instrument.health < 0) {
         instrument.reset();
         this.score++;

@@ -1,5 +1,5 @@
 // Project 3 - Prototype 1
-// Previous codes from Exercise 4, 5 and 7
+// Previous codes from Exercise 4, 5, 7 and project 2
 // by Pippin Barr
 // Modified and improved by Carole Chao
 //
@@ -108,7 +108,7 @@ function setup(){
   skyBlueCar = new Vehicle(100,100,5,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
   darkBlueCar = new Vehicle(100,100,15,color(150,150,150), 50, darkBlueImage, 87, 83, 65, 68, 70);
   yellowCar = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
-  redCar = new Instrument(100,100,15,color(175,175,175),50,redCarImage);
+  redCar = new Instrument(100,100,15,color(175,175,175),50, redCarImage);
 // put the tools in array groups
   toolOne = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
   toolTwo = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
@@ -123,6 +123,8 @@ function setup(){
 // Add the ability to start playing when Spacebar is pressed and change screens
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
+
+if (startGame === true){
 // Add background image
 background(backdrop,0,0);
 
@@ -174,10 +176,10 @@ yellowCar.handleEating(toolFive);
 
 // yellowCar.handleEating(barriers);
 
-// // Handle redCar to eat any type of tools + obstacle
+// Handle redCar to eat any type of tools + obstacle
 // redCar.handleEating(toolOne);
 // redCar.handleEating(toolTwo);
-// // redCar.handleEating(toolThree);
+// redCar.handleEating(toolThree);
 // redCar.handleEating(toolFour);
 // redCar.handleEating(toolFive);
 
@@ -194,4 +196,43 @@ toolTwo.display();
 toolFour.display();
 toolFive.display();
 // barriers.display();
+} else {
+  // STart Screen image of F1 Themed backgrund with Game instructions and title
+  background(startScreenBackdrop,0,0);
+  fill(277,101,91);
+  textSize(75);
+  textAlign(CENTER);
+  text("F1 MONTREAL GRAND PRIX", width /2, height/2);
+  textSize(30);
+  textAlign(CENTER);
+  text("Presse SPACEBAR to play.", width /2, height/2 +50);
+  text("Use keys Up, Down, Right, Left to move the sky blue car.", width / 2, height / 2 + 100);
+  text("Use keys W, A, S, D to move the dark blue car.", width / 2, height / 2 + 150);
+  text("Use keys I, J, K, L to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
+  } if (gameOver === true){
+  // Display the inside of a garage as background image and Game Over text
+  fill(93,62,120);
+  textFont(wallpoet);
+  textSize(45);
+  textStyle(BOLD);
+  textAlign(CENTER,CENTER);
+  image(endScreenBackdrop,0,0);
+
+  // Set up the text to display with array groups with each player's score
+  let gameOverText = "GAME OVER";
+  gameOverText = gameOverText + "sky blue car" +
+  gameOverText = gameOverText + "dark blue car" +
+
+  }
+}
+
+// Start playing when pressing Spacebar
+function keyPressed();
+  if (keyCode == 32){
+    startGame = true;
+  }
+
+// Show game over screen when predator dies with array groups
+function checkGameOver() {
+  if()
 }
