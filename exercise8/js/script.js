@@ -1,7 +1,7 @@
 // Project 3 - Prototype 1
 // Previous code from Exercise 5 and Exercise 7
 // by Pippin Barr
-// Modified by Carole Chao
+// Modified and improved by Carole Chao
 //
 //
 // Creates predators, preys and obstacles (of different sizes and speeds)
