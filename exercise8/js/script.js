@@ -1,5 +1,5 @@
 // Project 3 - Prototype 1
-// Previous code from Exercise 5 and Exercise 7
+// Previous codes from Exercise 4, 5 and 7
 // by Pippin Barr
 // Modified and improved by Carole Chao
 //
@@ -38,7 +38,11 @@ let barriers;
 let wallpoet;
 
 // A variable for the car sounds & background music and sounds.
-
+let carCrashSFX;
+let bigCrashSFX;
+let carIgnitionSFX;
+let carFlyBySFX;
+let edmBGM;
 
 // A variable to add the start screen and ending screen.
 let startGame = false;
@@ -48,6 +52,7 @@ let gamerOver = false;
 let vehiclesGroup = [];
 let toolsGroups = [];
 let obstacles = [];
+let soundEffects = [];
 
 // preload()
 //
@@ -76,7 +81,11 @@ function preload(){
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
   wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
   // new Audio("assets/sounds/")
-
+  carCrashSFX = new Audio("assets/sounds/car-crash1SFX.wav");
+  bigCrashSFX = new Audio("assets/sounds/big-crash2SFX.wav");
+  carIgnitionSFX = new Audio("assets/sounds/car-ignition-1SFX.wav");
+  carFlyBySFX = new Audio("assets/sounds/v8-supercar-fly-bySFX.wav");
+  edmBGM = new Audio("assets/sounds/generic-edm-loopBGM.wav");
 }
 
 // setup()
@@ -86,8 +95,13 @@ function preload(){
 // Set the text font and sound effects every time a Predator eats Prey
 
 function setup(){
-  console.log("loaded");
   createCanvas(1280,720);
+// put the sound effects and the background music
+  edmBGM.play();
+  carCrashSFX.play();
+  bigCrashSFX.play();
+  carIgnitionSFX.play();
+  carFlyBySFX.play();
   background(backdrop,0,0);
   textFont(wallpoet);
 // put the cars in array groups
@@ -102,6 +116,7 @@ function setup(){
   toolFour = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
   toolFive = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
   // barriers = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
+
 }
 
 // draw()
