@@ -14,11 +14,6 @@ let darkBlueImage;
 let yellowCarImage;
 let redCarImage;
 
-let skyBlueCar;
-let darkBlueCar;
-let yellowCar;
-let redCar;
-
 // Set variables for the car tools and obstacles
 let toolOneImage;
 let toolTwoImage;
@@ -27,12 +22,6 @@ let toolFourImage;
 let toolFiveImage;
 let barriersImage;
 
-let toolOne;
-let toolTwo;
-let toolThree;
-let toolFour;
-let toolFive;
-let barriers;
 
 // Add variables for font
 let wallpoet;
@@ -52,7 +41,6 @@ let gamerOver = false;
 let vehiclesGroup = [];
 let toolsGroups = [];
 let obstacles = [];
-let soundEffects = [];
 
 // preload()
 //
@@ -74,7 +62,7 @@ function preload(){
   toolFiveImage = loadImage("assets/images/tool5.png");
 
   // Preload obstacle images
-  barriers = loadImage("assets/images/clip-art-vector-construction.png");
+  barriersImage = loadImage("assets/images/clip-art-vector-construction.png");
   // Preload Background, font, sounds and music
   backdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   startScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
@@ -105,16 +93,16 @@ function setup(){
   background(backdrop,0,0);
   textFont(wallpoet);
 // put the cars in array groups
-  skyBlueCar = new Vehicle(100,100,5,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
-  darkBlueCar = new Vehicle(100,100,15,color(150,150,150), 50, darkBlueImage, 87, 83, 65, 68, 70);
-  yellowCar = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
-  redCar = new Instrument(100,100,15,color(175,175,175),50, redCarImage);
+  vehiclesGroup[0] = new Vehicle(100,100,5,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
+  vehiclesGroup[1] = new Vehicle(100,100,15,color(150,150,150), 50, darkBlueImage, 87, 83, 65, 68, 70);
+  vehiclesGroup[2] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
+  vehiclesGroup[3] = new Instrument(100,100,15,color(175,175,175),50, redCarImage);
 // put the tools in array groups
-  toolOne = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
-  toolTwo = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
-  toolThre = new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
-  toolFour = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
-  toolFive = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
+  toolsGroups[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
+  toolsGroups[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
+  toolsGroups[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
+  toolsGroups[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
+  toolsGroups[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
   // barriers = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
 
 }
@@ -129,16 +117,16 @@ if (startGame === true){
 background(backdrop,0,0);
 
 // Handle input for the cars/predators
-skyBlueCar.handleInput();
-darkBlueCar.handleInput();
-yellowCar.handleInput();
-// redCar.handleInput();
+vehiclesGroup[0].handleInput();
+vehiclesGroup[1].handleInput();
+vehiclesGroup[2].handleInput();
+// vehiclesGroup[3].handleInput();
 
 // Move all the cars in the game
-skyBlueCar.move();
-darkBlueCar.move();
-yellowCar.move();
-redCar.move();
+vehiclesGroup[0].move();
+vehiclesGroup[1].move();
+vehiclesGroup[2].move();
+vehiclesGroup[3].move();
 
 // Move all the tools and obstacle in the game
 toolOne.move();
@@ -150,46 +138,46 @@ toolFive.move();
 
 
 // Handle skyBlueCar to eat any type of tools + obstacle
-skyBlueCar.handleEating(toolOne);
-skyBlueCar.handleEating(toolTwo);
+vehiclesGroup[0].handleEating(toolOne);
+vehiclesGroup[0].handleEating(toolTwo);
 // skyBlueCar.handleEating(toolThree);
-skyBlueCar.handleEating(toolFour);
-skyBlueCar.handleEating(toolFive);
+vehiclesGroup[0].handleEating(toolFour);
+vehiclesGroup[0].handleEating(toolFive);
 
 // skyBlueCar.handleEating(barriers);
 
 // Handle darkBlueCar to eat any type of tools + obstacle
-darkBlueCar.handleEating(toolOne);
-darkBlueCar.handleEating(toolTwo);
+vehiclesGroup[1].handleEating(toolOne);
+vehiclesGroup[1].handleEating(toolTwo);
 // darkBlueCar.handleEating(toolThree);
-darkBlueCar.handleEating(toolFour);
-darkBlueCar.handleEating(toolFive);
+vehiclesGroup[1].handleEating(toolFour);
+vehiclesGroup[1].handleEating(toolFive);
 
-// darkBlueCar.handleEating(barriers);
+// vehiclesGroup[1].handleEating(barriers);
 
 // Handle yellowCar to eat any type of tools + obstacle
-yellowCar.handleEating(toolOne);
-yellowCar.handleEating(toolTwo);
+vehiclesGroup[2].handleEating(toolOne);
+vehiclesGroup[2].handleEating(toolTwo);
 // yellowCar.handleEating(toolThree);
-yellowCar.handleEating(toolFour);
-yellowCar.handleEating(toolFive);
+vehiclesGroup[2].handleEating(toolFour);
+vehiclesGroup[2].handleEating(toolFive);
 
 // yellowCar.handleEating(barriers);
 
 // Handle redCar to eat any type of tools + obstacle
-// redCar.handleEating(toolOne);
-// redCar.handleEating(toolTwo);
-// redCar.handleEating(toolThree);
-// redCar.handleEating(toolFour);
-// redCar.handleEating(toolFive);
+// vehiclesGroup[3].handleEating(toolOne);
+// vehiclesGroup[3].handleEating(toolTwo);
+// vehiclesGroup[3].handleEating(toolThree);
+// vehiclesGroup[3].handleEating(toolFour);
+// vehiclesGroup[3].handleEating(toolFive);
 
-// redCar.handleEating(barriers);
+// vehiclesGroup[3].handleEating(barriers);
 
 // Display all the elements on the screen
-skyBlueCar.display();
-darkBlueCar.display();
-redCar.display();
-yellowCar.display();
+vehiclesGroup[0].display();
+vehiclesGroup[1].display();
+vehiclesGroup[3].display();
+vehiclesGroup[2].display();
 toolOne.display();
 toolTwo.display();
 // toolThree.display();
@@ -219,7 +207,7 @@ toolFive.display();
   image(endScreenBackdrop,0,0);
 
   // Set up the text to display with array groups with each player's score
-  let gameOverText = "GAME OVER";
+  let gameOverText = "GAME OVER\n";
   gameOverText = gameOverText + "sky blue car" +
   gameOverText = gameOverText + "dark blue car" +
 
