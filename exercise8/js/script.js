@@ -103,7 +103,7 @@ function setup(){
   toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
   toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
   toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
-  // obstacles[0] = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
+  obstacles[0] = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
 
 }
 
@@ -131,46 +131,42 @@ vehiclesGroup[3].move();
 // Move all the tools and obstacle in the game
 toolsGroup[0].move();
 toolsGroup[1].move();
-// toolsGroup[2].move();
 toolsGroup[2].move();
 toolsGroup[3].move();
+toolsGroup[4].move();
 // obstacles[0].move();
-
 
 // Handle skyBlueCar to eat any type of tools + obstacle
 vehiclesGroup[0].handleEating(toolsGroup[0]);
 vehiclesGroup[0].handleEating(toolsGroup[1]);
-// vehiclesGroup[0].handleEating(toolsGroup[2]);
+vehiclesGroup[0].handleEating(toolsGroup[2]);
 vehiclesGroup[0].handleEating(toolsGroup[3]);
 vehiclesGroup[0].handleEating(toolsGroup[4]);
-
-// skyBlueCar.handleEating(obstacles[0]);
+vehiclesGroup[0].handleEating(obstacles[0]);
 
 // Handle darkBlueCar to eat any type of tools + obstacle
 vehiclesGroup[1].handleEating(toolsGroup[0]);
 vehiclesGroup[1].handleEating(toolsGroup[1]);
-// vehiclesGroup[1].handleEating(toolsGroup[2]);
+vehiclesGroup[1].handleEating(toolsGroup[2]);
 vehiclesGroup[1].handleEating(toolsGroup[3]);
 vehiclesGroup[1].handleEating(toolsGroup[4]);
-
-// vehiclesGroup[1].handleEating(obstacles[0]);
+vehiclesGroup[1].handleEating(obstacles[0]);
 
 // Handle yellowCar to eat any type of tools + obstacle
 vehiclesGroup[2].handleEating(toolsGroup[0]);
 vehiclesGroup[2].handleEating(toolsGroup[1]);
-// vehiclesGroup[2].handleEating(toolsGroup[2]);
+vehiclesGroup[2].handleEating(toolsGroup[2]);
 vehiclesGroup[2].handleEating(toolsGroup[3]);
 vehiclesGroup[2].handleEating(toolsGroup[4]);
-// vehiclesGroup[2].handleEating(obstacles[0]);
+vehiclesGroup[2].handleEating(obstacles[0]);
 
 // Handle redCar to eat any type of tools + obstacle
-// vehiclesGroup[3].handleEating(toolsGroup[0]);
-// vehiclesGroup[3].handleEating(toolsGroup[1]);
-// vehiclesGroup[3].handleEating(toolsGroup[2]);
-// vehiclesGroup[3].handleEating(toolsGroup[3]);
-// vehiclesGroup[3].handleEating(toolsGroup[4]);
-
-// vehiclesGroup[3].handleEating(obstacles[0]);
+vehiclesGroup[3].handleEating(toolsGroup[0]);
+vehiclesGroup[3].handleEating(toolsGroup[1]);
+vehiclesGroup[3].handleEating(toolsGroup[2]);
+vehiclesGroup[3].handleEating(toolsGroup[3]);
+vehiclesGroup[3].handleEating(toolsGroup[4]);
+vehiclesGroup[3].handleEating(obstacles[0]);
 
 // Display all the elements on the screen
 vehiclesGroup[0].display();
@@ -179,10 +175,10 @@ vehiclesGroup[3].display();
 vehiclesGroup[2].display();
 toolsGroup[0].display();
 toolsGroup[1].display();
-// toolsGroup[2].display();
+toolsGroup[2].display();
 toolsGroup[3].display();
 toolsGroup[4].display();
-// obstacles[0].display();
+obstacles[0].display();
 checkGameOver();
 } else {
   // STart Screen image of F1 Themed backgrund with Game instructions and title
@@ -199,18 +195,18 @@ checkGameOver();
   text("Use keys I, J, K, L to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
   } if (gameOver === true){
   // Display the inside of a garage as background image and Game Over text
-  fill(93,62,120);
+  fill(227, 200, 102);
   textFont(wallpoet);
   textSize(45);
   textStyle(BOLD);
   textAlign(CENTER,CENTER);
-  image(endScreenBackdrop,0,0);
+  image(endScreenBackdrop,0,0,width,height);
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "sky blue car upgraded" + vehiclesGroup[0].score + "times\n";
-  gameOverText = gameOverText + "dark blue car upgraded" + vehiclesGroup[1].score + "times\n";
-  gameOverText = gameOverText + "yellow car upgrated" + vehiclesGroup[2].score + "times\n";
+  gameOverText = gameOverText + "sky blue car upgraded " + vehiclesGroup[0].score + " times\n";
+  gameOverText = gameOverText + "dark blue car upgraded " + vehiclesGroup[1].score + " times\n";
+  gameOverText = gameOverText + "yellow car upgrated " + vehiclesGroup[2].score + " times\n";
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
   }
