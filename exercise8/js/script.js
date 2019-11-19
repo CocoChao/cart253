@@ -35,11 +35,11 @@ let edmBGM;
 
 // A variable to add the start screen and ending screen.
 let startGame = false;
-let gamerOver = false;
+let gameOver = false;
 
 // Add empty groups arrays for cars and tools
 let vehiclesGroup = [];
-let toolsGroups = [];
+let toolsGroup = [];
 let obstacles = [];
 
 // preload()
@@ -98,12 +98,12 @@ function setup(){
   vehiclesGroup[2] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
   vehiclesGroup[3] = new Instrument(100,100,15,color(175,175,175),50, redCarImage);
 // put the tools in array groups
-  toolsGroups[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
-  toolsGroups[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
-  toolsGroups[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
-  toolsGroups[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
-  toolsGroups[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
-  // barriers = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
+  toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
+  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
+  toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
+  toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
+  toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
+  // obstacles[0] = new Obstacle(100,100,15,color(255,255,255),40, barriersImage);
 
 }
 
@@ -129,61 +129,61 @@ vehiclesGroup[2].move();
 vehiclesGroup[3].move();
 
 // Move all the tools and obstacle in the game
-toolOne.move();
-toolTwo.move();
-// toolThree.move();
-toolFour.move();
-toolFive.move();
-// barriers.move();
+toolsGroup[0].move();
+toolsGroup[1].move();
+// toolsGroup[2].move();
+toolsGroup[2].move();
+toolsGroup[3].move();
+// obstacles[0].move();
 
 
 // Handle skyBlueCar to eat any type of tools + obstacle
-vehiclesGroup[0].handleEating(toolOne);
-vehiclesGroup[0].handleEating(toolTwo);
-// skyBlueCar.handleEating(toolThree);
-vehiclesGroup[0].handleEating(toolFour);
-vehiclesGroup[0].handleEating(toolFive);
+vehiclesGroup[0].handleEating(toolsGroup[0]);
+vehiclesGroup[0].handleEating(toolsGroup[1]);
+// vehiclesGroup[0].handleEating(toolsGroup[2]);
+vehiclesGroup[0].handleEating(toolsGroup[3]);
+vehiclesGroup[0].handleEating(toolsGroup[4]);
 
-// skyBlueCar.handleEating(barriers);
+// skyBlueCar.handleEating(obstacles[0]);
 
 // Handle darkBlueCar to eat any type of tools + obstacle
-vehiclesGroup[1].handleEating(toolOne);
-vehiclesGroup[1].handleEating(toolTwo);
-// darkBlueCar.handleEating(toolThree);
-vehiclesGroup[1].handleEating(toolFour);
-vehiclesGroup[1].handleEating(toolFive);
+vehiclesGroup[1].handleEating(toolsGroup[0]);
+vehiclesGroup[1].handleEating(toolsGroup[1]);
+// vehiclesGroup[1].handleEating(toolsGroup[2]);
+vehiclesGroup[1].handleEating(toolsGroup[3]);
+vehiclesGroup[1].handleEating(toolsGroup[4]);
 
-// vehiclesGroup[1].handleEating(barriers);
+// vehiclesGroup[1].handleEating(obstacles[0]);
 
 // Handle yellowCar to eat any type of tools + obstacle
-vehiclesGroup[2].handleEating(toolOne);
-vehiclesGroup[2].handleEating(toolTwo);
-// yellowCar.handleEating(toolThree);
-vehiclesGroup[2].handleEating(toolFour);
-vehiclesGroup[2].handleEating(toolFive);
-
-// yellowCar.handleEating(barriers);
+vehiclesGroup[2].handleEating(toolsGroup[0]);
+vehiclesGroup[2].handleEating(toolsGroup[1]);
+// vehiclesGroup[2].handleEating(toolsGroup[2]);
+vehiclesGroup[2].handleEating(toolsGroup[3]);
+vehiclesGroup[2].handleEating(toolsGroup[4]);
+// vehiclesGroup[2].handleEating(obstacles[0]);
 
 // Handle redCar to eat any type of tools + obstacle
-// vehiclesGroup[3].handleEating(toolOne);
-// vehiclesGroup[3].handleEating(toolTwo);
-// vehiclesGroup[3].handleEating(toolThree);
-// vehiclesGroup[3].handleEating(toolFour);
-// vehiclesGroup[3].handleEating(toolFive);
+// vehiclesGroup[3].handleEating(toolsGroup[0]);
+// vehiclesGroup[3].handleEating(toolsGroup[1]);
+// vehiclesGroup[3].handleEating(toolsGroup[2]);
+// vehiclesGroup[3].handleEating(toolsGroup[3]);
+// vehiclesGroup[3].handleEating(toolsGroup[4]);
 
-// vehiclesGroup[3].handleEating(barriers);
+// vehiclesGroup[3].handleEating(obstacles[0]);
 
 // Display all the elements on the screen
 vehiclesGroup[0].display();
 vehiclesGroup[1].display();
 vehiclesGroup[3].display();
 vehiclesGroup[2].display();
-toolOne.display();
-toolTwo.display();
-// toolThree.display();
-toolFour.display();
-toolFive.display();
-// barriers.display();
+toolsGroup[0].display();
+toolsGroup[1].display();
+// toolsGroup[2].display();
+toolsGroup[3].display();
+toolsGroup[4].display();
+// obstacles[0].display();
+checkGameOver();
 } else {
   // STart Screen image of F1 Themed backgrund with Game instructions and title
   background(startScreenBackdrop,0,0);
