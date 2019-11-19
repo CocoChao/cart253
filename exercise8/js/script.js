@@ -208,19 +208,24 @@ toolFive.display();
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "sky blue car" +
-  gameOverText = gameOverText + "dark blue car" +
-
+  gameOverText = gameOverText + "sky blue car upgraded" + vehiclesGroup[0].score + "times\n";
+  gameOverText = gameOverText + "dark blue car upgraded" + vehiclesGroup[1].score + "times\n";
+  gameOverText = gameOverText + "yellow car upgrated" + vehiclesGroup[2].score + "times\n";
+// Display it in the center of the screen
+text(gameOverText,width/2,height/2);
   }
 }
 
 // Start playing when pressing Spacebar
-function keyPressed();
+function keyPressed(){;
   if (keyCode == 32){
     startGame = true;
   }
+}
 
 // Show game over screen when predator dies with array groups
 function checkGameOver() {
-  if()
+  if(vehiclesGroup[0].health === 0 && vehiclesGroup[1].health === 0 && vehiclesGroup[2].health === 0){
+    gameOver = true;
+  }
 }
