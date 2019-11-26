@@ -179,8 +179,8 @@ checkGameOver();
   textAlign(CENTER);
   text("Presse SPACEBAR to play.", width /2, height/2 +50);
   text("Use keys Up, Down, Right, Left to move the sky blue car.", width / 2, height / 2 + 100);
-  text("Use keys W, A, S, D to move the dark blue car.", width / 2, height / 2 + 150);
-  text("Use keys I, J, K, L to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
+  text("Use keys WASD to move the dark blue car.", width / 2, height / 2 + 150);
+  text("Use keys IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
   } if (gameOver === true){
   // Display the inside of a garage as background image and Game Over text
   fill(227, 200, 102);
