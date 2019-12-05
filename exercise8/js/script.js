@@ -32,8 +32,7 @@ let carFlyBySFX;
 let edmBGM;
 
 // A variable to add the start screen and ending screen.
-let startGame = false;
-let gameOver = false;
+let gameState = 0; //game is active
 
 // Add empty groups arrays for cars and tools
 let vehiclesGroup = [];
@@ -103,7 +102,7 @@ function setup(){
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
 
-if (startGame === true){
+if (gameState === 1){
 // Add background image
 background(backdrop,0,0);
 
@@ -168,7 +167,7 @@ checkGameOver();
   text("Use keys Up, Down, Right, Left to move the sky blue car.", width / 2, height / 2 + 100);
   text("Use keys WASD to move the dark blue car.", width / 2, height / 2 + 150);
   text("Use keys IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
-  } if (gameOver === true){
+} if (gameState === 2){
   // Display the inside of a garage as background image and Game Over text
   fill(227, 200, 102);
   textFont(wallpoet);
@@ -190,17 +189,18 @@ text(gameOverText,width/2,height/2);
 // Start playing when pressing Spacebar
 function keyPressed(){
   if (keyCode == 32){
-    startGame = true;
+    gameState = 1;
   }
 }
 
 // Show game over screen when predator dies with array groups
 function checkGameOver() {
   if(vehiclesGroup[0].health === 0 && vehiclesGroup[1].health === 0 && vehiclesGroup[2].health === 0){
-    gameOver = true;
+    gameState = 2;
   }
 }
+// Click anywhere on the screen to restart the game
 function mousePressed(){
-  redraw();
-  loop();
+  gameState=0;
+  setup();
 }
