@@ -61,9 +61,9 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
     // Add the ability to "sprint" when the player holds down the shift key
     if (keyIsDown(this.shiftKey)) {
       this.speed = this.speed * 1.5;
+      carFlyBySFX.play() // play sound effects when speeding
     } else {
-      this.speed = this.speed;
-    carFlyBySFX.play // play sound effects when speeding
+      this.speed = 10;
     }
   }
 

@@ -87,8 +87,8 @@ function setup(){
   textFont(wallpoet);
 // put the cars in array groups
   vehiclesGroup[0] = new Vehicle(100,100,10,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
-  vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
-  vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68);
+  vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72, 16);
+  vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68, 16);
 // put the tools in array groups
   toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
   toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
@@ -181,6 +181,7 @@ checkGameOver();
   gameOverText = gameOverText + "sky blue car upgraded " + vehiclesGroup[0].score + " times\n";
   gameOverText = gameOverText + "dark blue car upgraded " + vehiclesGroup[1].score + " times\n";
   gameOverText = gameOverText + "yellow car upgrated " + vehiclesGroup[2].score + " times\n";
+  gameOverText = gameOverText + "Click anywhere to restart the game\n";
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
   }
