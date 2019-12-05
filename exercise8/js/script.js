@@ -14,12 +14,15 @@ let skyBlueCarImage;
 let yellowCarImage;
 let redCarImage;
 
-// Set variables for the car tools and obstacles
+// Set variables for the car tools
 let toolOneImage;
 let toolTwoImage;
 let toolThreeImage;
 let toolFourImage;
 let toolFiveImage;
+
+// Set variable for the obstacles
+let obstacleOneImage
 
 // Add variables for font
 let wallpoet;
@@ -37,6 +40,9 @@ let gameState = 0; //game is active
 // Add empty groups arrays for cars and tools
 let vehiclesGroup = [];
 let toolsGroup = [];
+let numToolsGroupAnimation = 5;
+let currentToolsGroupAnimation=0;
+let obstaclesGroup = [];
 
 // preload()
 //
@@ -46,22 +52,26 @@ let toolsGroup = [];
 
 function preload(){
   //Preload cars Images
-  skyBlueCarImage = loadImage("assets/images/Race-Car-PNG-Picture.png");
-  yellowCarImage = loadImage("assets/images/Race-Car-PNG-Clipart.png");
-  redCarImage = loadImage("assets/images/Race-Car-PNG-HD.png");
+  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-Picture.png"));
+  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-Clipart.png"));
+  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-HD.png"));
   // Preload tool images
-  toolOneImage = loadImage("assets/images/Tool1.png");
-  toolTwoImage = loadImage("assets/images/tool2.png");
-  toolThreeImage = loadImage("assets/images/tool3.png");
-  toolFourImage = loadImage("assets/images/tool4.png");
-  toolFiveImage = loadImage("assets/images/tool5.png");
-
+  for (let i = 1; i <= numToolsGroup; i++){
+    let filePath = "assets/images/Tool" + i + ".png";
+    toolsGroup.push(loadImage("assets/images/Tool1.png"));
+    toolsGroup.push(loadImage("assets/images/tool2.png"));
+    toolsGroup.push(loadImage("assets/images/tool3.png"));
+    toolsGroup.push(loadImage("assets/images/tool4.png"));
+    toolsGroup.push(loadImage("assets/images/tool5.png"));
+  }
+  // Preload obstacle Images
+  obstaclesGroup.push(loadImage("assets/images/clip-art-vector-construction.png"));
   // Preload Background, font, sounds and music
   backdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   startScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
   wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
-  // new Audio("assets/sounds/")
+  // Preload background music and sound effects
   carCrashSFX = new Audio("assets/sounds/car-crash1SFX.wav");
   bigCrashSFX = new Audio("assets/sounds/big-crash2SFX.wav");
   carIgnitionSFX = new Audio("assets/sounds/car-ignition-1SFX.wav");
@@ -95,6 +105,8 @@ function setup(){
   toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
   toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
   toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
+// put the obstacles in array groups
+  obstaclesGroup[0] = new Block(100,100,13, color(255,255,255), 25, obstacleOneImage);
 }
 
 // draw()
@@ -105,6 +117,7 @@ function draw() {
 if (gameState === 1){
 // Add background image
 background(backdrop,0,0);
+image(toolsGroup)
 
 // Handle input for the cars/predators
 vehiclesGroup[0].handleInput();
@@ -122,6 +135,7 @@ toolsGroup[1].move();
 toolsGroup[2].move();
 toolsGroup[3].move();
 toolsGroup[4].move();
+obstaclesGroup[0].move();
 
 // Handle skyBlueCar to eat any type of tools + obstacle
 vehiclesGroup[0].handleEating(toolsGroup[0]);
@@ -129,6 +143,7 @@ vehiclesGroup[0].handleEating(toolsGroup[1]);
 vehiclesGroup[0].handleEating(toolsGroup[2]);
 vehiclesGroup[0].handleEating(toolsGroup[3]);
 vehiclesGroup[0].handleEating(toolsGroup[4]);
+vehiclesGroup[0].handleEating(obstaclesGroup[0]);
 
 // Handle yellowCar to eat any type of tools + obstacle
 vehiclesGroup[1].handleEating(toolsGroup[0]);
@@ -136,6 +151,7 @@ vehiclesGroup[1].handleEating(toolsGroup[1]);
 vehiclesGroup[1].handleEating(toolsGroup[2]);
 vehiclesGroup[1].handleEating(toolsGroup[3]);
 vehiclesGroup[1].handleEating(toolsGroup[4]);
+vehiclesGroup[1].handleEating(obstaclesGroup[0]);
 
 // Handle redCar to eat any type of tools + obstacle
 vehiclesGroup[2].handleEating(toolsGroup[0]);
@@ -143,6 +159,7 @@ vehiclesGroup[2].handleEating(toolsGroup[1]);
 vehiclesGroup[2].handleEating(toolsGroup[2]);
 vehiclesGroup[2].handleEating(toolsGroup[3]);
 vehiclesGroup[2].handleEating(toolsGroup[4]);
+vehiclesGroup[2].handleEating(obstaclesGroup[0]);
 
 // Display all the elements on the screen
 vehiclesGroup[0].display();
@@ -153,6 +170,7 @@ toolsGroup[1].display();
 toolsGroup[2].display();
 toolsGroup[3].display();
 toolsGroup[4].display();
+obstaclesGroup[0].display();
 checkGameOver();
 } else {
   // Start Screen image of F1 Themed backgrund with Game instructions and title
