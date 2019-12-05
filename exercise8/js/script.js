@@ -7,10 +7,10 @@
 // Creates predators, preys and obstacles (of different sizes and speeds)
 // The predator chase the preys using the arrows and keys to consume them.
 // The predator loses health over time, so much keep eating to survive.
+// Adds music and sounds effects when player plays the game
 
 // Set variable for cars
 let skyBlueCarImage;
-let darkBlueImage;
 let yellowCarImage;
 let redCarImage;
 
@@ -48,7 +48,6 @@ let toolsGroup = [];
 function preload(){
   //Preload cars Images
   skyBlueCarImage = loadImage("assets/images/Race-Car-PNG-Picture.png");
-  darkBlueImage = loadImage("assets/images/car-racing-clipart-10.jpg.png");
   yellowCarImage = loadImage("assets/images/Race-Car-PNG-Clipart.png");
   redCarImage = loadImage("assets/images/Race-Car-PNG-HD.png");
   // Preload tool images
@@ -88,17 +87,15 @@ function setup(){
   background(backdrop,0,0);
   textFont(wallpoet);
 // put the cars in array groups
-  vehiclesGroup[0] = new Vehicle(100,100,5,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
-  vehiclesGroup[1] = new Vehicle(100,100,15,color(150,150,150), 50, darkBlueImage, 87, 83, 65, 68, 70);
-  vehiclesGroup[2] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
-  vehiclesGroup[3] = new Instrument(100,100,15,color(175,175,175),50, redCarImage);
+  vehiclesGroup[0] = new Vehicle(100,100,10,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
+  vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72);
+  vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68);
 // put the tools in array groups
   toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
   toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
   toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
   toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
   toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
-
 }
 
 // draw()
@@ -114,13 +111,11 @@ background(backdrop,0,0);
 vehiclesGroup[0].handleInput();
 vehiclesGroup[1].handleInput();
 vehiclesGroup[2].handleInput();
-vehiclesGroup[3].handleInput();
 
 // Move all the cars in the game
 vehiclesGroup[0].move();
 vehiclesGroup[1].move();
 vehiclesGroup[2].move();
-vehiclesGroup[3].move();
 
 // Move all the tools and obstacle in the game
 toolsGroup[0].move();
@@ -136,31 +131,23 @@ vehiclesGroup[0].handleEating(toolsGroup[2]);
 vehiclesGroup[0].handleEating(toolsGroup[3]);
 vehiclesGroup[0].handleEating(toolsGroup[4]);
 
-// Handle darkBlueCar to eat any type of tools + obstacle
+// Handle yellowCar to eat any type of tools + obstacle
 vehiclesGroup[1].handleEating(toolsGroup[0]);
 vehiclesGroup[1].handleEating(toolsGroup[1]);
 vehiclesGroup[1].handleEating(toolsGroup[2]);
 vehiclesGroup[1].handleEating(toolsGroup[3]);
 vehiclesGroup[1].handleEating(toolsGroup[4]);
 
-// Handle yellowCar to eat any type of tools + obstacle
+// Handle redCar to eat any type of tools + obstacle
 vehiclesGroup[2].handleEating(toolsGroup[0]);
 vehiclesGroup[2].handleEating(toolsGroup[1]);
 vehiclesGroup[2].handleEating(toolsGroup[2]);
 vehiclesGroup[2].handleEating(toolsGroup[3]);
 vehiclesGroup[2].handleEating(toolsGroup[4]);
 
-// Handle redCar to eat any type of tools + obstacle
-vehiclesGroup[3].handleEating(toolsGroup[0]);
-vehiclesGroup[3].handleEating(toolsGroup[1]);
-vehiclesGroup[3].handleEating(toolsGroup[2]);
-vehiclesGroup[3].handleEating(toolsGroup[3]);
-vehiclesGroup[3].handleEating(toolsGroup[4]);
-
 // Display all the elements on the screen
 vehiclesGroup[0].display();
 vehiclesGroup[1].display();
-vehiclesGroup[3].display();
 vehiclesGroup[2].display();
 toolsGroup[0].display();
 toolsGroup[1].display();
@@ -201,7 +188,7 @@ text(gameOverText,width/2,height/2);
 }
 
 // Start playing when pressing Spacebar
-function keyPressed(){;
+function keyPressed(){
   if (keyCode == 32){
     startGame = true;
   }
@@ -212,4 +199,8 @@ function checkGameOver() {
   if(vehiclesGroup[0].health === 0 && vehiclesGroup[1].health === 0 && vehiclesGroup[2].health === 0){
     gameOver = true;
   }
+}
+function mousePressed(){
+  redraw();
+  loop();
 }
