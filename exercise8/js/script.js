@@ -73,8 +73,8 @@ function preload(){
   // Preload obstacle Images
   obstacleOneImage = loadImage("assets/images/clip-art-vector-construction.png");
   // Preload Background, font, sounds and music
-  backdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
-  startScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
+  instructionScreenBackdrop = loadImage("assets/images/3Characters-InstructionScreen.png");
+  playScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
   wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
   // Preload background music and sound effects
@@ -99,7 +99,7 @@ function setup(){
   bigCrashSFX.play();
   carIgnitionSFX.play();
   carFlyBySFX.play();
-  background(backdrop,0,0);
+  background(playScreenBackdrop,0,0);
   textFont(wallpoet);
 // put the cars in array groups
   vehiclesGroup[0] = new Vehicle(100,100,10,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
@@ -122,7 +122,7 @@ function draw() {
 
 if (gameState === 1){
 // Add background image and play background music when window loads
-background(backdrop,0,0);
+background(playScreenBackdrop,0,0);
 edmBGM.play();
 
 // Handle input for the cars/predators
@@ -181,31 +181,35 @@ obstaclesGroup[0].display();
 checkGameOver();
 } else {
   // Start Screen image of F1 Themed backgrund with Game instructions and title
-  background(startScreenBackdrop,0,0);
-  fill(277,101,91);
+  background(instructionScreenBackdrop,0,0);
+  fill(171, 171, 171);
+  strokeWeight(2);
+  stroke(0, 0, 0);
   textSize(75);
   textAlign(CENTER);
-  text("F1 MONTREAL GRAND PRIX", width /2, height/2);
+  text("MONTREAL GRAND\nSTUNT CAR SHOW", width /2, height/2);
   textSize(30);
   textAlign(CENTER);
-  text("Presse SPACEBAR to play.", width /2, height/2 +50);
-  text("Use keys Up, Down, Right, Left to move the sky blue car.", width / 2, height / 2 + 100);
-  text("Use keys WASD to move the dark blue car.", width / 2, height / 2 + 150);
-  text("Use keys IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
+  text("Presse SPACEBAR to play.", width /2, height/2 +125);
+  text("Use Up, Down, Right, Left to move the blue car.", width / 2, height / 2 + 150);
+  text("Use WASD to move the red car.", width / 2, height / 2 + 175);
+  text("Use IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
 } if (gameState === 2){
   // Display the inside of a garage as background image and Game Over text
-  fill(227, 200, 102);
+  fill(235, 230, 145);
+  stroke(0,0,0);
+  strokeWeight(4);
   textFont(wallpoet);
-  textSize(45);
+  textSize(50);
   textStyle(BOLD);
   textAlign(CENTER,CENTER);
   image(endScreenBackdrop,0,0,width,height);
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "sky blue car upgraded " + vehiclesGroup[0].score + " times\n";
-  gameOverText = gameOverText + "dark blue car upgraded " + vehiclesGroup[1].score + " times\n";
-  gameOverText = gameOverText + "yellow car upgrated " + vehiclesGroup[2].score + " times\n";
+  gameOverText = gameOverText + "Blue car got fixed " + vehiclesGroup[0].score + " times\n";
+  gameOverText = gameOverText + "Red car got fixed " + vehiclesGroup[1].score + " times\n";
+  gameOverText = gameOverText + "Yellow got fixed  " + vehiclesGroup[2].score + " times\n";
   gameOverText = gameOverText + "Click anywhere to restart the game\n";
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
