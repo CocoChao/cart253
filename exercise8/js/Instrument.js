@@ -10,7 +10,7 @@ class Instrument {
   //
   // Sets the initial values for the instrument's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, fillColor, radius, elementImage) {
+  constructor(x, y, speed, fillColor, radius, toolsAniGroup) {
     // Position
     this.x = x;
     this.y = y;
@@ -27,7 +27,9 @@ class Instrument {
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health;
-    this.elementImage = elementImage;
+    //this.elementImage = elementImage;
+    this.currentAnimationFrame=0;
+    this.toolsAnimationGroup=toolsAniGroup;
   }
 
   // move
@@ -74,12 +76,23 @@ class Instrument {
   // Use image as the instrument on the canvas
   // with a radius the same size as its current health.
   display() {
-    image(this.elementImage, this.x, this.y, this.radius * 2, this.radius * 2);
-    push();
-    noStroke();
-    fill(this.fillColor);
-    this.radius = this.health;
-    pop();
+
+  // Display the animated tools all over the screen moving randomly using noise.
+    image(this.toolsAnimationGroup[this.currentAnimationFrame], this.x, this.y);
+
+    let programFramesPerAnimationFrame = floor(programFrameRate / animationFrameRate);
+      // And we can check whether this many frames have passed in the program
+      // using modulo, which tells us the remainder after division (if it's zero
+      // the current frame count is a perfect multiple of our animation's frame rate
+      // and we can advance the frame)
+      if (frameCount % programFramesPerAnimationFrame === 0) {
+        // Move to the next frame
+        this.currentAnimationFrame++;
+        // Check if we've reached the end of the array (the end of the animation frames)
+        if (this.currentAnimationFrame >= this.toolsAnimationGroup.length) {
+          this.currentAnimationFrame = 0;
+        }
+      }
   }
 
   // reset

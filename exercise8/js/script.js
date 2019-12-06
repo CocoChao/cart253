@@ -40,9 +40,15 @@ let gameState = 0; //game is active
 // Add empty groups arrays for cars and tools
 let vehiclesGroup = [];
 let toolsGroup = [];
+let toolsAnimationGroup = [];
 let numToolsGroupAnimation = 5;
-let currentToolsGroupAnimation=0;
+
+
 let obstaclesGroup = [];
+
+let programFrameRate = 60;
+let animationFrameRate = 10;
+
 
 // preload()
 //
@@ -52,20 +58,20 @@ let obstaclesGroup = [];
 
 function preload(){
   //Preload cars Images
-  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-Picture.png"));
-  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-Clipart.png"));
-  vehiclesGroup.push(loadImage("assets/images/Race-Car-PNG-HD.png"));
+  skyBlueCarImage = loadImage("assets/images/Race-Car-PNG-Picture.png");
+  yellowCarImage = loadImage("assets/images/Race-Car-PNG-Clipart.png");
+  redCarImage = loadImage("assets/images/Race-Car-PNG-HD.png");
   // Preload tool images
-  for (let i = 1; i <= numToolsGroup; i++){
-    let filePath = "assets/images/Tool" + i + ".png";
-    toolsGroup.push(loadImage("assets/images/Tool1.png"));
-    toolsGroup.push(loadImage("assets/images/tool2.png"));
-    toolsGroup.push(loadImage("assets/images/tool3.png"));
-    toolsGroup.push(loadImage("assets/images/tool4.png"));
-    toolsGroup.push(loadImage("assets/images/tool5.png"));
+  for (let i = 0; i <numToolsGroupAnimation; i++){
+  let indexT = i+1;
+    let filePath = "assets/images/tool" + indexT + ".png";
+  // console.log(filePath);
+    toolsAnimationGroup.push(loadImage(filePath));
+  // console.log(toolsGroup[i])
+
   }
   // Preload obstacle Images
-  obstaclesGroup.push(loadImage("assets/images/clip-art-vector-construction.png"));
+  obstacleOneImage = loadImage("assets/images/clip-art-vector-construction.png");
   // Preload Background, font, sounds and music
   backdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   startScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
@@ -100,11 +106,11 @@ function setup(){
   vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72, 16);
   vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68, 16);
 // put the tools in array groups
-  toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolOneImage);
-  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25, toolTwoImage);
-  toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolThreeImage);
-  toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolFourImage);
-  toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolFiveImage);
+  toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolsAnimationGroup[0]);
+  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25,toolsAnimationGroup[1]);
+  toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolsAnimationGroup[2]);
+  toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolsAnimationGroup[3]);
+  toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolsAnimationGroup[4]);
 // put the obstacles in array groups
   obstaclesGroup[0] = new Block(100,100,13, color(255,255,255), 25, obstacleOneImage);
 }
@@ -117,7 +123,7 @@ function draw() {
 if (gameState === 1){
 // Add background image
 background(backdrop,0,0);
-image(toolsGroup)
+
 
 // Handle input for the cars/predators
 vehiclesGroup[0].handleInput();
@@ -129,7 +135,7 @@ vehiclesGroup[0].move();
 vehiclesGroup[1].move();
 vehiclesGroup[2].move();
 
-// Move all the tools and obstacle in the game
+//Move all the tools and obstacle in the game
 toolsGroup[0].move();
 toolsGroup[1].move();
 toolsGroup[2].move();
@@ -165,6 +171,7 @@ vehiclesGroup[2].handleEating(obstaclesGroup[0]);
 vehiclesGroup[0].display();
 vehiclesGroup[1].display();
 vehiclesGroup[2].display();
+
 toolsGroup[0].display();
 toolsGroup[1].display();
 toolsGroup[2].display();
