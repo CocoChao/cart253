@@ -82,7 +82,7 @@ function preload(){
   bigCrashSFX = new Audio("assets/sounds/big-crash2SFX.wav");
   carIgnitionSFX = new Audio("assets/sounds/car-ignition-1SFX.wav");
   carFlyBySFX = new Audio("assets/sounds/v8-supercar-fly-bySFX.wav");
-  edmBGM = new Audio("assets/sounds/generic-edm-loopBGM.wav");
+  edmBGM = createAudio("assets/sounds/generic-edm-loopBGM.wav");
 }
 
 // setup()
@@ -93,8 +93,8 @@ function preload(){
 
 function setup(){
   createCanvas(1280,720);
-// put the sound effects and the background music
-  edmBGM.play();
+// put the sound effects and the background music with loop
+  edmBGM.loop();
   carCrashSFX.play();
   bigCrashSFX.play();
   carIgnitionSFX.play();
@@ -106,11 +106,11 @@ function setup(){
   vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72, 16);
   vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68, 16);
 // put the tools in array groups
-  toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolsAnimationGroup[0]);
-  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25,toolsAnimationGroup[1]);
-  toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolsAnimationGroup[2]);
-  toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolsAnimationGroup[3]);
-  toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolsAnimationGroup[4]);
+  toolsGroup[0] = new Instrument(100,100,14, color(255,100,10),25, toolsAnimationGroup);
+  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25,toolsAnimationGroup);
+  toolsGroup[2]= new Instrument(100,100,17, color(255,255,0),25, toolsAnimationGroup);
+  toolsGroup[3] = new Instrument(100,100,14, color(255,255,255),25, toolsAnimationGroup);
+  toolsGroup[4] = new Instrument(100,100,15, color(255,255,255),25, toolsAnimationGroup);
 // put the obstacles in array groups
   obstaclesGroup[0] = new Block(100,100,13, color(255,255,255), 25, obstacleOneImage);
 }
@@ -121,9 +121,9 @@ function setup(){
 function draw() {
 
 if (gameState === 1){
-// Add background image
+// Add background image and play background music when window loads
 background(backdrop,0,0);
-
+edmBGM.play();
 
 // Handle input for the cars/predators
 vehiclesGroup[0].handleInput();
