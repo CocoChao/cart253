@@ -35,7 +35,7 @@ let carFlyBySFX;
 let edmBGM;
 
 // A variable to add the start screen and ending screen.
-let gameState = 0; //game is active
+let gameState = 1; //game is active
 
 // Add empty groups arrays for cars and tools
 let vehiclesGroup = [];
@@ -73,6 +73,7 @@ function preload(){
   // Preload obstacle Images
   obstacleOneImage = loadImage("assets/images/clip-art-vector-construction.png");
   // Preload Background, font, sounds and music
+  storyScreenBackdrop = loadImage("assets/images/StoryScreenBackdrop.png");
   instructionScreenBackdrop = loadImage("assets/images/3Characters-InstructionScreen.png");
   playScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
@@ -121,6 +122,32 @@ function setup(){
 function draw() {
 
 if (gameState === 1){
+  // Display the story and the background image
+  fill(0,0,0);
+  textFont(wallpoet);
+  textSize(50);
+  textStyle(BOLD);
+  textAlign(CENTER,CENTER);
+  image(storyScreenBackdrop,0,0,width,height);
+  text("Presse SPACEBAR to play.", width /2, height/2 +125);
+}
+else if (gameState === 2){
+  // Start Screen image of F1 Themed backgrund with Game instructions and title
+  background(instructionScreenBackdrop,0,0);
+  fill(171, 171, 171);
+  strokeWeight(2);
+  stroke(0, 0, 0);
+  textSize(75);
+  textAlign(CENTER);
+  text("MONTREAL GRAND\nSTUNT CAR SHOW", width /2, height/2);
+  textSize(30);
+  textAlign(CENTER);
+  text("Presse SPACEBAR to play.", width /2, height/2 +125);
+  text("Use Up, Down, Right, Left to move the blue car.", width / 2, height / 2 + 150);
+  text("Use WASD to move the red car.", width / 2, height / 2 + 175);
+  text("Use IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
+}
+if (gameState === 3){
 // Add background image and play background music when window loads
 background(playScreenBackdrop,0,0);
 edmBGM.play();
@@ -179,22 +206,7 @@ toolsGroup[3].display();
 toolsGroup[4].display();
 obstaclesGroup[0].display();
 checkGameOver();
-} else {
-  // Start Screen image of F1 Themed backgrund with Game instructions and title
-  background(instructionScreenBackdrop,0,0);
-  fill(171, 171, 171);
-  strokeWeight(2);
-  stroke(0, 0, 0);
-  textSize(75);
-  textAlign(CENTER);
-  text("MONTREAL GRAND\nSTUNT CAR SHOW", width /2, height/2);
-  textSize(30);
-  textAlign(CENTER);
-  text("Presse SPACEBAR to play.", width /2, height/2 +125);
-  text("Use Up, Down, Right, Left to move the blue car.", width / 2, height / 2 + 150);
-  text("Use WASD to move the red car.", width / 2, height / 2 + 175);
-  text("Use IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
-} if (gameState === 2){
+} else if (gameState === 4){
   // Display the inside of a garage as background image and Game Over text
   fill(235, 230, 145);
   stroke(0,0,0);
@@ -213,24 +225,30 @@ checkGameOver();
   gameOverText = gameOverText + "Click anywhere to restart the game\n";
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
-  }
+}
 }
 
 // Start playing when pressing Spacebar
 function keyPressed(){
   if (keyCode == 32){
-    gameState = 1;
+    gameState = 3;
+  }
+  // Read story and press enter for the instructions
+  if (keyCode == 13){
+    gameState = 2;
   }
 }
 
 // Show game over screen when predator dies with array groups
 function checkGameOver() {
   if(vehiclesGroup[0].health === 0 && vehiclesGroup[1].health === 0 && vehiclesGroup[2].health === 0){
-    gameState = 2;
+    gameState = 4;
   }
 }
 // Click anywhere on the screen to restart the game
 function mousePressed(){
-  gameState=0;
+  if (gameState===4){
+  gameState=2;
   setup();
+}
 }
