@@ -122,14 +122,19 @@ function setup(){
 function draw() {
 
 if (gameState === 1){
-  // Display the story and the background image
+  // Display the story, the background image and press enter to display the Instructions
   fill(0,0,0);
   textFont(wallpoet);
-  textSize(50);
+  textSize(30);
   textStyle(BOLD);
-  textAlign(CENTER,CENTER);
+  textAlign(LEFT,CENTER);
   image(storyScreenBackdrop,0,0,width,height);
-  text("Presse SPACEBAR to play.", width /2, height/2 +125);
+  text("For the past few months, Car Show Montreal had\nto face some difficulties and the owner of the\nMontreal Car Show is asking three ex-stunt drivers\nto participate in a last minute show ", width /4, height/4);
+  textSize(40);
+  textStyle(BOLD);
+  textAlign(LEFT,CENTER);
+  text("Presse ENTER to display\nthe instructions.", width /4, height/4 +450);
+
 }
 else if (gameState === 2){
   // Start Screen image of F1 Themed backgrund with Game instructions and title
@@ -145,7 +150,7 @@ else if (gameState === 2){
   text("Presse SPACEBAR to play.", width /2, height/2 +125);
   text("Use Up, Down, Right, Left to move the blue car.", width / 2, height / 2 + 150);
   text("Use WASD to move the red car.", width / 2, height / 2 + 175);
-  text("Use IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 200);
+  text("Use IJKL to move the yellow car.\n GOOD LUCK!.", width / 2, height / 2 + 215);
 }
 if (gameState === 3){
 // Add background image and play background music when window loads
@@ -248,7 +253,7 @@ function checkGameOver() {
 // Click anywhere on the screen to restart the game
 function mousePressed(){
   if (gameState===4){
-  gameState=2;
+  gameState=1;
   setup();
 }
 }
