@@ -31,8 +31,8 @@ class Block {
   }
 
   // move
-  //
-  // Sets velocity based on the noise() function and the obstacle's speed
+  // 
+  // Sets velocity based on the noise() function and the block's speed
   // Moves based on the resulting velocity and handles wrapping
   move() {
     // Set velocity via noise()
