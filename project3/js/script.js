@@ -145,7 +145,7 @@ if (gameState === 1){
   textSize(30);
   textStyle(BOLD);
   textAlign(LEFT,CENTER);
-  // image(storyScreenBackdrop,0,0,width,height);
+  image(storyScreenBackdrop,0,0,width,height);
   text("For the past few months, Car Show Montreal had\nto face some difficulties and the owner of \nthe company is asking three ex-stunt drivers\nto participate in a last minute show.", width /4, height/6);
   text("This is a practice session. You will have to show\nsome tricks and run towards obstacles.\nDON'T WORRY! You will be able to pick some\ntools on your way to fix your car's damages.", width/4, height/5 +145);
   text("HOWEVER,if you take too long to get your\ncar fixed, it will break down and\ndissapear.", width/4, height/4+275);
