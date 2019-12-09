@@ -85,7 +85,7 @@ function preload(){
 
   // Preload Background, font, sounds and music
   storyScreenBackdrop = loadImage("assets/images/StoryScreenBackdrop.png");
-  instructionScreenBackdrop = loadImage("assets/images/3Characters-InstructionScreen.png");
+  instructionScreenBackdrop = loadImage("assets/images/3Characters-InstructionScreen.gif");
   playScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
   wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
