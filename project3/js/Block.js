@@ -21,6 +21,7 @@ class Block {
     // Time properties for noise() function
     this.tx = random(0, 1000);
     this.ty = random(0, 1000);
+    this.radius = radius;
     // Health properties
     this.maxHealth = this.radius;
     this.health = this.maxHealth;

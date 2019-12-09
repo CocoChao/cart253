@@ -108,6 +108,7 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
   // overlaps it. If so, reduces the prey's health and increases
   // the predator's. If the prey dies, it gets reset.
   handleEating(instrument) {
+
     // Calculate distance from this predator to the prey
     let d = dist(this.x, this.y, instrument.x, instrument.y);
     if (d < this.radius + instrument.radius) {
@@ -115,38 +116,17 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       // Decrease prey health by the same amount
-      instrument.health += this.healthGainPerEat;
+      instrument.health -= this.healthGainPerEat;
+
       // Add sound effect when instrument/prey is eaten
       carIgnitionSFX.play();
       // Check if the prey died, reset it if so and play sound effects
+      // Add score only for Obstacles
       if (instrument.health < 0) {
         instrument.reset();
+        if (instrument instanceof Block){
         this.score++;
-      }
-    }
-  }
-
-  // handleEating
-  //
-  // Takes a Prey object as an argument and checks if the predator
-  // overlaps it. If so, reduces the prey's health and increases
-  // the predator's. If the prey dies, it gets reset.
-  handleEating(block) {
-    // Calculate distance from this predator to the prey
-    let d = dist(this.x, this.y, block.x, block.y);
-    // Check if the distance is less than their two radius (an overlap)
-    if (d < this.radius + block.radius) {
-      // Decreases predator health and constrain it to its possible range
-      this.health -= this.healthGainPerEat;
-      this.health = constrain(this.maxHealth, 0, this.health);
-      // Decrease prey health by the same amount
-      block.health -= this.healthGainPerEat;
-      // Add sound effect when instrument/prey is eaten
-      carIgnitionSFX.play();
-      // Check if the prey died, reset it if so and play sound effects
-      if (block.health < 0) {
-        block.reset();
-        this.score++;
+        }
       }
     }
   }

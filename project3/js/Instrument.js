@@ -10,6 +10,7 @@ class Instrument {
   //
   // Sets the initial values for the instrument's properties
   // Either sets default values or uses the arguments provided
+
   constructor(x, y, speed, fillColor, radius, toolsAniGroup) {
     // Position
     this.x = x;
@@ -18,11 +19,13 @@ class Instrument {
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
+    this.radius = radius;
     // Time properties for noise() function
     this.tx = random(0, 1000);
     this.ty = random(0, 1000);
     // Health properties
     this.maxHealth = this.radius;
+
     this.health = this.maxHealth;
     // Display properties
     this.fillColor = fillColor;
@@ -78,7 +81,7 @@ class Instrument {
   display() {
 
   // Display the animated tools all over the screen moving randomly using noise.
-    image(this.toolsAnimationGroup[this.currentAnimationFrame], this.x, this.y);
+    image(this.toolsAnimationGroup[this.currentAnimationFrame], this.x, this.y, this.radius, this.radius);
 
     let programFramesPerAnimationFrame = floor(programFrameRate / animationFrameRate);
       // And we can check whether this many frames have passed in the program

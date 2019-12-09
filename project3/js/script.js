@@ -118,19 +118,19 @@ function setup(){
   vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72, 16);
   vehiclesGroup[2] = new Vehicle(100,100,10,color(175,175,175),50, redCarImage, 87, 83, 65, 68, 16);
 // put the tools in array groups
-  toolsGroup[0] = new Instrument(100,100,10, color(255,100,10),10, toolsAnimationGroup);
-  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),10,toolsAnimationGroup);
-  toolsGroup[2]= new Instrument(100,100,10, color(255,255,0),10, toolsAnimationGroup);
-  toolsGroup[3] = new Instrument(100,100,10, color(255,255,255),10, toolsAnimationGroup);
-  toolsGroup[4] = new Instrument(100,100,10, color(255,255,255),10, toolsAnimationGroup);
+  toolsGroup[0] = new Instrument(100,100,10, color(255,100,10),25, toolsAnimationGroup);
+  toolsGroup[1] = new Instrument(100,100,10, color(255,255,255),25,toolsAnimationGroup);
+  toolsGroup[2]= new Instrument(100,100,10, color(255,255,0),25, toolsAnimationGroup);
+  toolsGroup[3] = new Instrument(100,100,10, color(255,255,255),25, toolsAnimationGroup);
+  toolsGroup[4] = new Instrument(100,100,10, color(255,255,255),25, toolsAnimationGroup);
 // put the obstacles in array groups
   // obstaclesGroup[0] = new Block(100,100,10, color(255,255,255), 20, obstacleOneImage);
-  obstaclesGroup[1] = new Block(100,100,10, color(255,255,255), 20, obstacleTwoImage);
-  obstaclesGroup[2] = new Block(100,100,10, color(255,255,255), 20, obstacleThreeImage);
-  obstaclesGroup[3] = new Block(100,100,10, color(255,255,255), 20, obstacleFourImage);
-  obstaclesGroup[4] = new Block(100,100,10, color(255,255,255), 20, obstacleFiveImage);
-  obstaclesGroup[5] = new Block(100,100,10, color(255,255,255), 20, obstacleSixImage);
-  obstaclesGroup[6] = new Block(100,100,10, color(255,255,255), 20, obstacleSevenImage);
+  obstaclesGroup[1] = new Block(100,100,10, color(255,255,255), 50, obstacleTwoImage);
+  obstaclesGroup[2] = new Block(100,100,10, color(255,255,255), 50, obstacleThreeImage);
+  obstaclesGroup[3] = new Block(100,100,10, color(255,255,255), 50, obstacleFourImage);
+  obstaclesGroup[4] = new Block(100,100,10, color(255,255,255), 50, obstacleFiveImage);
+  obstaclesGroup[5] = new Block(100,100,10, color(255,255,255), 50, obstacleSixImage);
+  obstaclesGroup[6] = new Block(100,100,10, color(255,255,255), 50, obstacleSevenImage);
 }
 
 // draw()
