@@ -148,7 +148,6 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
         block.reset();
         this.score++;
       }
-      console.log(this.health);
     }
   }
 

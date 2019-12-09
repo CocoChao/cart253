@@ -88,7 +88,7 @@ function preload(){
   instructionScreenBackdrop = loadImage("assets/images/3Characters-InstructionScreen.gif");
   playScreenBackdrop = loadImage("assets/images/F1-Track_backgroundimage.jpg");
   endScreenBackdrop = loadImage("assets/images/Game-over-screen.jpg");
-  wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
+  // wallpoet = loadFont("assets/images/Wallpoet/Wallpoet-Regular.ttf");
   // Preload background music and sound effects
   carCrashSFX = new Audio("assets/sounds/car-crash1SFX.wav");
   bigCrashSFX = new Audio("assets/sounds/big-crash2SFX.wav");
@@ -112,7 +112,7 @@ function setup(){
   carIgnitionSFX.play();
   carFlyBySFX.play();
   background(playScreenBackdrop,0,0);
-  textFont(wallpoet);
+  // textFont(wallpoet);
 // put the cars in array groups
   vehiclesGroup[0] = new Vehicle(100,100,10,color(200,200,0),50, skyBlueCarImage, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, 16);
   vehiclesGroup[1] = new Vehicle(100,100,10,color(120,120,97),50, yellowCarImage, 73, 75, 74, 76, 72, 16);
@@ -141,7 +141,7 @@ function draw() {
 if (gameState === 1){
   // Display the story, the background image and press enter to display the Instructions
   fill(0,0,0);
-  textFont(wallpoet);
+  // textFont(wallpoet);
   textSize(30);
   textStyle(BOLD);
   textAlign(LEFT,CENTER);
