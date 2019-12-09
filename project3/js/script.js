@@ -106,11 +106,11 @@ function preload(){
 function setup(){
   createCanvas(1280,720);
 // put the sound effects and the background music with loop
-  edmBGM.loop();
-  carCrashSFX.play();
-  bigCrashSFX.play();
-  carIgnitionSFX.play();
-  carFlyBySFX.play();
+  // edmBGM.loop();
+  // carCrashSFX.play();
+  // bigCrashSFX.play();
+  // carIgnitionSFX.play();
+  // carFlyBySFX.play();
   background(playScreenBackdrop,0,0);
   // textFont(wallpoet);
 // put the cars in array groups
