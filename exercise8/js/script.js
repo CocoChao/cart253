@@ -169,7 +169,7 @@ else if (gameState === 2){
   textSize(30);
   text("Use Up, Down, Right, Left to move the blue car.\nUse WASD to move the red car.\nUse IJKL to move the yellow car.\nGOOD LUCK!", width / 2, height / 2 + 150);
   textSize(40);
-  text("Presse SPACEBAR to play.", width /2, height/2 +250);
+  text("Press SPACEBAR to play.", width /2, height/2 +250);
 }
 if (gameState === 3){
 // Add background image and play background music when window loads
