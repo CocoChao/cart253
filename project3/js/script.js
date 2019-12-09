@@ -278,7 +278,7 @@ checkGameOver();
   gameOverText= gameOverText + "The Red car suffered from " + vehiclesGroup[1].score + " accidents\n";
   gameOverText= gameOverText + "The Yellow got suffered from " + vehiclesGroup[2].score + " accidents\n";
   gameOverText= gameOverText + "Click anywhere to restart the game\n";
-  fill(179, 177, 166);
+  fill(255,255,255);
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
 }
