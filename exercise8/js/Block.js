@@ -22,7 +22,7 @@ class Block {
     this.tx = random(0, 1000);
     this.ty = random(0, 1000);
     // Health properties
-    this.maxHealth = radius;
+    this.maxHealth = this.radius;
     this.health = this.maxHealth;
     // Display properties
     this.fillColor = fillColor;
@@ -31,7 +31,7 @@ class Block {
   }
 
   // move
-  // 
+  //
   // Sets velocity based on the noise() function and the block's speed
   // Moves based on the resulting velocity and handles wrapping
   move() {
@@ -76,10 +76,8 @@ class Block {
   display() {
     image(this.elementImage, this.x, this.y, this.radius * 2, this.radius * 2);
     push();
-    noStroke();
     fill(this.fillColor);
     this.radius = this.health;
-    pop();
   }
 
   // reset

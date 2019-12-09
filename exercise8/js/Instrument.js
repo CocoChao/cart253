@@ -22,7 +22,7 @@ class Instrument {
     this.tx = random(0, 1000);
     this.ty = random(0, 1000);
     // Health properties
-    this.maxHealth = radius;
+    this.maxHealth = this.radius;
     this.health = this.maxHealth;
     // Display properties
     this.fillColor = fillColor;

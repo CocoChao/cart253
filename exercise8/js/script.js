@@ -54,6 +54,7 @@ let obstaclesGroup = [];
 let programFrameRate = 60;
 let animationFrameRate = 10;
 
+
 // preload()
 //
 // Preload pictures of all the elements, images, background sound, font
@@ -263,21 +264,24 @@ obstaclesGroup[6].display();
 checkGameOver();
 } else if (gameState === 4){
   // Display the inside of a garage as background image and Game Over text
-  fill(235, 230, 145);
   stroke(0,0,0);
   strokeWeight(4);
   textFont(wallpoet);
-  textSize(50);
+  textSize(40);
   textStyle(BOLD);
   textAlign(CENTER,CENTER);
   image(endScreenBackdrop,0,0,width,height);
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "Blue car got fixed " + vehiclesGroup[0].score + " times\n";
-  gameOverText = gameOverText + "Red car got fixed " + vehiclesGroup[1].score + " times\n";
-  gameOverText = gameOverText + "Yellow got fixed  " + vehiclesGroup[2].score + " times\n";
-  gameOverText = gameOverText + "Click anywhere to restart the game\n";
+  gameOverText = gameOverText + "The Blue car suffered from an accident " + vehiclesGroup[0].score + " times\n";
+  fill(106, 191, 222);
+  gameOverText= gameOverText + "The Red car suffered from an accident " + vehiclesGroup[1].score + " times\n";
+  fill(232, 80, 63);
+  gameOverText= gameOverText + "The Yellow got suffered from an accident " + vehiclesGroup[2].score + " times\n";
+  fill(240, 222, 65);
+  gameOverText= gameOverText + "Click anywhere to restart the game\n";
+  fill(179, 177, 166);
 // Display it in the center of the screen
 text(gameOverText,width/2,height/2);
 }
