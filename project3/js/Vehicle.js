@@ -22,7 +22,7 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
     // Health properties
     this.maxHealth = radius;
     this.health = this.maxHealth;
-    this.healthLossPerMove = 0.1;
+    this.healthLossPerMove = 0.05;
     this.healthGainPerEat = 1;
     // Display properties
     this.fillColor = fillColor;
@@ -134,11 +134,11 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
   handleEating(block) {
     // Calculate distance from this predator to the prey
     let d = dist(this.x, this.y, block.x, block.y);
-    // Check if the distance is less than their two radii (an overlap)
+    // Check if the distance is less than their two radius (an overlap)
     if (d < this.radius + block.radius) {
-      // Increase predator health and constrain it to its possible range
-      this.health += this.healthGainPerEat;
-      this.health = constrain(this.health, 0, this.maxHealth);
+      // Decreases predator health and constrain it to its possible range
+      this.health -= this.healthGainPerEat;
+      this.health = constrain(this.maxHealth, 0, this.health);
       // Decrease prey health by the same amount
       block.health -= this.healthGainPerEat;
       // Add sound effect when instrument/prey is eaten
@@ -148,6 +148,7 @@ constructor(x, y, speed, fillColor, radius, elementImage, up, down, left, right,
         block.reset();
         this.score++;
       }
+      console.log(this.health);
     }
   }
 

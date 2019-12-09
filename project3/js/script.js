@@ -75,7 +75,7 @@ function preload(){
   // console.log(toolsGroup[i])
   }
   // Preload obstacle Images
-  obstacleOneImage = loadImage("assets/images/clip-art-vector-construction.png");
+  // obstacleOneImage = loadImage("assets/images/clip-art-vector-construction.png");
   obstacleTwoImage = loadImage("assets/images/car_stunt_obstacle1.png");
   obstacleThreeImage = loadImage("assets/images/car_stunt_obstacle2.png");
   obstacleFourImage = loadImage("assets/images/car_stunt_obstacle3.png");
@@ -124,7 +124,7 @@ function setup(){
   toolsGroup[3] = new Instrument(100,100,10, color(255,255,255),10, toolsAnimationGroup);
   toolsGroup[4] = new Instrument(100,100,10, color(255,255,255),10, toolsAnimationGroup);
 // put the obstacles in array groups
-  obstaclesGroup[0] = new Block(100,100,10, color(255,255,255), 20, obstacleOneImage);
+  // obstaclesGroup[0] = new Block(100,100,10, color(255,255,255), 20, obstacleOneImage);
   obstaclesGroup[1] = new Block(100,100,10, color(255,255,255), 20, obstacleTwoImage);
   obstaclesGroup[2] = new Block(100,100,10, color(255,255,255), 20, obstacleThreeImage);
   obstaclesGroup[3] = new Block(100,100,10, color(255,255,255), 20, obstacleFourImage);
@@ -192,7 +192,7 @@ toolsGroup[1].move();
 toolsGroup[2].move();
 toolsGroup[3].move();
 toolsGroup[4].move();
-obstaclesGroup[0].move();
+// obstaclesGroup[0].move();
 obstaclesGroup[1].move();
 obstaclesGroup[2].move();
 obstaclesGroup[3].move();
@@ -206,7 +206,7 @@ vehiclesGroup[0].handleEating(toolsGroup[1]);
 vehiclesGroup[0].handleEating(toolsGroup[2]);
 vehiclesGroup[0].handleEating(toolsGroup[3]);
 vehiclesGroup[0].handleEating(toolsGroup[4]);
-vehiclesGroup[0].handleEating(obstaclesGroup[0]);
+// vehiclesGroup[0].handleEating(obstaclesGroup[0]);
 vehiclesGroup[0].handleEating(obstaclesGroup[1]);
 vehiclesGroup[0].handleEating(obstaclesGroup[2]);
 vehiclesGroup[0].handleEating(obstaclesGroup[3]);
@@ -220,7 +220,7 @@ vehiclesGroup[1].handleEating(toolsGroup[1]);
 vehiclesGroup[1].handleEating(toolsGroup[2]);
 vehiclesGroup[1].handleEating(toolsGroup[3]);
 vehiclesGroup[1].handleEating(toolsGroup[4]);
-vehiclesGroup[1].handleEating(obstaclesGroup[0]);
+// vehiclesGroup[1].handleEating(obstaclesGroup[0]);
 vehiclesGroup[1].handleEating(obstaclesGroup[1]);
 vehiclesGroup[1].handleEating(obstaclesGroup[2]);
 vehiclesGroup[1].handleEating(obstaclesGroup[3]);
@@ -234,7 +234,7 @@ vehiclesGroup[2].handleEating(toolsGroup[1]);
 vehiclesGroup[2].handleEating(toolsGroup[2]);
 vehiclesGroup[2].handleEating(toolsGroup[3]);
 vehiclesGroup[2].handleEating(toolsGroup[4]);
-vehiclesGroup[2].handleEating(obstaclesGroup[0]);
+// vehiclesGroup[2].handleEating(obstaclesGroup[0]);
 vehiclesGroup[2].handleEating(obstaclesGroup[1]);
 vehiclesGroup[2].handleEating(obstaclesGroup[2]);
 vehiclesGroup[2].handleEating(obstaclesGroup[3]);
@@ -253,7 +253,7 @@ toolsGroup[2].display();
 toolsGroup[3].display();
 toolsGroup[4].display();
 
-obstaclesGroup[0].display();
+// obstaclesGroup[0].display();
 obstaclesGroup[1].display();
 obstaclesGroup[2].display();
 obstaclesGroup[3].display();
@@ -274,12 +274,9 @@ checkGameOver();
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "The Blue car suffered from an accident " + vehiclesGroup[0].score + " times\n";
-  fill(106, 191, 222);
-  gameOverText= gameOverText + "The Red car suffered from an accident " + vehiclesGroup[1].score + " times\n";
-  fill(232, 80, 63);
-  gameOverText= gameOverText + "The Yellow got suffered from an accident " + vehiclesGroup[2].score + " times\n";
-  fill(240, 222, 65);
+  gameOverText = gameOverText + "The Blue car suffered from " + vehiclesGroup[0].score + " accidents\n";
+  gameOverText= gameOverText + "The Red car suffered from " + vehiclesGroup[1].score + " accidents\n";
+  gameOverText= gameOverText + "The Yellow got suffered from " + vehiclesGroup[2].score + " accidents\n";
   gameOverText= gameOverText + "Click anywhere to restart the game\n";
   fill(179, 177, 166);
 // Display it in the center of the screen
