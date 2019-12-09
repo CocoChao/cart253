@@ -167,7 +167,7 @@ else if (gameState === 2){
   textAlign(CENTER);
   text("MONTREAL GRAND\nSTUNT CAR SHOW", width /2, height/2);
   textSize(30);
-  text("Use Up, Down, Right, Left to move the blue car.\nUse WASD to move the red car.\nUse IJKL to move the yellow car.\nGOOD LUCK!", width / 2, height / 2 + 150);
+  text("Use Up, Down, Right, Left to move the blue car.\nUse WASD to move the red car.\nUse IJKL to move the yellow car.", width / 2, height / 2 + 150);
   textSize(40);
   text("Presse SPACEBAR to play.", width /2, height/2 +250);
 }
