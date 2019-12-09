@@ -274,9 +274,9 @@ checkGameOver();
 
   // Set up the text to display with array groups with each player's score
   let gameOverText = "GAME OVER\n";
-  gameOverText = gameOverText + "The Blue car suffered from an accident " + vehiclesGroup[0].score + " times\n";
-  gameOverText= gameOverText + "The Red car suffered from an accident " + vehiclesGroup[1].score + " times\n";
-  gameOverText= gameOverText + "The Yellow got suffered from an accident " + vehiclesGroup[2].score + " times\n";
+  gameOverText = gameOverText + "The Blue car suffered from " + vehiclesGroup[0].score + " accidents\n";
+  gameOverText= gameOverText + "The Red car suffered from " + vehiclesGroup[1].score + " accidents\n";
+  gameOverText= gameOverText + "The Yellow got suffered from " + vehiclesGroup[2].score + " accidents\n";
   gameOverText= gameOverText + "Click anywhere to restart the game\n";
   fill(179, 177, 166);
 // Display it in the center of the screen
